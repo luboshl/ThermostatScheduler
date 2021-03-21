@@ -1,0 +1,5 @@
+﻿@viewModel Scheduler.App.Pages.Default.DefaultViewModel, Scheduler.App
+@masterPage Pages/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+</dot:Content>

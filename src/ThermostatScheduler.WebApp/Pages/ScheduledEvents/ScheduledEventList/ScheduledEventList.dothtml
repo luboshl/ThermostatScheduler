@@ -1,0 +1,63 @@
+﻿@viewModel Scheduler.App.Pages.ScheduledEvents.ScheduledEventList.ScheduledEventListViewModel, Scheduler.App
+@masterPage Pages/MasterPage.dotmaster
+@import Scheduler.App
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div class="page-center">
+        <div class="page-grid-top">
+            <h1>Časový program vytápění</h1>
+
+            <dot:RouteLink Text="Vytvořit nový zánam" RouteName="{resource: Routes.ScheduledEvents.ScheduledEventCreate}" class="page-button btn-add btn-long" />
+        </div>
+
+        <bp:FormItem LabelText="Filtr zóny">
+            <bp:DropDownList DataSource="{value: HeatingZones}"
+                             SelectedValue="{value: SelectedHeatingZoneId}"
+                             ItemTextBinding="{value: Name}"
+                             ItemValueBinding="{value: Id}"
+                             Placeholder="(Všechny zóny)"
+                             AllowUnselect
+                             Changed="{command: ReloadData()}" />
+        </bp:FormItem>
+
+        <bp:GridView DataSource="{value: ScheduledEventList}" class="page-grid"
+                     ShowTableWhenNoData>
+
+            <EmptyDataTemplate>Žádná data k zobrazení.</EmptyDataTemplate>
+
+            <bp:GridViewTextColumn Value="{value: Id}"
+                                   HeaderText="ID" />
+
+            <bp:GridViewTextColumn Value="{value: HeatingZoneName}"
+                                   HeaderText="Zóna" />
+
+            <bp:GridViewTextColumn Value="{value: Time}"
+                                   HeaderText="Čas"
+                                   FormatString="HH:mm" />
+
+            <bp:GridViewTextColumn Value="{value: Temperature}"
+                                   HeaderText="Teplota (°C)"
+                                   FormatString="N1" />
+
+            <bp:GridViewTextColumn Value="{value: Description}"
+                                   HeaderText="Poznámka" />
+
+            <bp:GridViewTemplateColumn HeaderCssClass="icon">
+                <dot:RouteLink RouteName="{resource: Routes.ScheduledEvents.ScheduledEventEdit}" Param-Id="{{value: Id}}">
+                    <bp:FAIcon Icon="PencilAltSolid" />
+                </dot:RouteLink>
+            </bp:GridViewTemplateColumn>
+
+            <bp:GridViewTemplateColumn HeaderCssClass="icon">
+                <dot:LinkButton Click="{command: _root.Delete(Id)}">
+                    <PostBack.Handlers>
+                        <dot:ConfirmPostBackHandler Message="Opravdu chcete záznam smazat?" />
+                    </PostBack.Handlers>
+                    <bp:FAIcon Icon="TrashAltRegular" />
+                </dot:LinkButton>
+            </bp:GridViewTemplateColumn>
+
+        </bp:GridView>
+    </div>
+</dot:Content>
+

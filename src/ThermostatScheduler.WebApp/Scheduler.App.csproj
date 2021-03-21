@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>8022af80-2f10-44d7-ad88-5cdd772d8968</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="**/*.dothtml;**/*.dotmaster;**/*.dotcontrol" Exclude="obj/**/*.*;bin/**/*.*" CopyToPublishDirectory="Always" />
+    <None Remove="**/*.dothtml;**/*.dotmaster;**/*.dotcontrol" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="dotvvm_serialized_config.json.tmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DotVVM.AspNetCore" Version="2.5.0" />
+    <PackageReference Include="DotVVM.BusinessPack" Version="2.5.0" />
+    <PackageReference Include="DotVVM.Diagnostics.StatusPage" Version="2.4.0" />
+    <PackageReference Include="JsonFlatFileDataStore" Version="2.2.2" />
+    <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.2.4" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ThermostatScheduler.Common\ThermostatScheduler.Common.csproj" />
+    <ProjectReference Include="..\ThermostatScheduler.Persistence\ThermostatScheduler.Persistence.csproj" />
+    <ProjectReference Include="..\ThermostatScheduler.Processing\ThermostatScheduler.Processing.csproj" />
+  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Resources\Texts.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Texts.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Resources\Texts.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>Texts.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+</Project>

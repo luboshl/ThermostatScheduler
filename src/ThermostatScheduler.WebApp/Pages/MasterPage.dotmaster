@@ -1,0 +1,28 @@
+﻿@viewModel Scheduler.App.Pages.MasterPageViewModel, Scheduler.App
+@import Scheduler.App
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Scheduler</title>
+    <dot:RequiredResource Name="Styles" />
+</head>
+<body>
+
+    <menu>
+        <li>
+            <dot:RouteLink Text="Home" RouteName="{resource: Routes.Default}" class="page-button-text" />
+        </li>
+        <li>
+            <dot:RouteLink Text="Zóny vytápění" RouteName="{resource: Routes.HeatingZones.HeatingZoneList}" class="page-button-text" />
+        </li>
+        <li>
+            <dot:RouteLink Text="Časový program vytápění" RouteName="{resource: Routes.ScheduledEvents.ScheduledEventList}" class="page-button-text" />
+        </li>
+    </menu>
+
+    <dot:ContentPlaceHolder ID="MainContent" />
+
+</body>
+</html>

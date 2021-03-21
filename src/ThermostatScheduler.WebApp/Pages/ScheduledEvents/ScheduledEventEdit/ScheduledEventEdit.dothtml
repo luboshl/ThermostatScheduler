@@ -1,0 +1,48 @@
+﻿@viewModel Scheduler.App.Pages.ScheduledEvents.ScheduledEventEdit.ScheduledEventEditViewModel, Scheduler.App
+@masterPage Pages/MasterPage.dotmaster
+@import Scheduler.App
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div class="page-center">
+        <dot:RouteLink RouteName="{resource: Routes.ScheduledEvents.ScheduledEventList}" Text="Zpět" class="page-button btn-back btn-long" />
+        <div class="page-box">
+            <h1>Úprava položky časového programu vytápění</h1>
+
+            <bp:FormItem LabelText="ID">
+                <bp:TextBox Text="{value: Model.Id}" Enabled="false" />
+            </bp:FormItem>
+
+            <bp:FormItem LabelText="Zóna">
+                <bp:DropDownList DataSource="{value: HeatingZones}"
+                                 SelectedValue="{value: Model.HeatingZoneId}"
+                                 ItemTextBinding="{value: Name}"
+                                 ItemValueBinding="{value: Id}"
+                                 Placeholder="Zvolte zónu"
+                                 AutoFocus />
+            </bp:FormItem>
+
+            <bp:FormItem LabelText="Čas">
+                <bp:TimePicker SelectedTime="{value: Model.Time}" />
+            </bp:FormItem>
+
+            <bp:FormItem LabelText="Teplota">
+                <bp:NumericUpDown Value="{value: Model.Temperature}"
+                                  MinValue="10"
+                                  MaxValue="30"
+                                  Step="0.5"
+                                  FormatString="N1" />
+            </bp:FormItem>
+
+            <bp:FormItem LabelText="Poznámka">
+                <bp:TextBox Text="{value: Model.Note}" />
+            </bp:FormItem>
+
+            <div class="btn-container">
+                <bp:Button Text="Uložit"
+                           Click="{command: Save()}"
+                           class="page-button" />
+            </div>
+        </div>
+    </div>
+</dot:Content>
+
