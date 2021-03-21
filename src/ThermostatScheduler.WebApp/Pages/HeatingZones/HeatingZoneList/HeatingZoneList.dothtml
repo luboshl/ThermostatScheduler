@@ -1,6 +1,6 @@
-﻿@viewModel Scheduler.App.Pages.HeatingZones.HeatingZoneList.HeatingZoneListViewModel, Scheduler.App
+﻿@viewModel ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneList.HeatingZoneListViewModel, ThermostatScheduler.WebApp
 @masterPage Pages/MasterPage.dotmaster
-@import Scheduler.App
+@import ThermostatScheduler.WebApp
 
 <dot:Content ContentPlaceHolderID="MainContent">
     <div class="page-center">
@@ -12,36 +12,41 @@
 
         <dot:ValidationSummary />
 
-        <bp:GridView DataSource="{value: HeatingZoneList}" class="page-grid"
-                     ShowTableWhenNoData>
+        <dot:GridView DataSource="{value: HeatingZoneList}" class="page-grid"
+                      ShowTableWhenNoData="true">
 
-            <EmptyDataTemplate>Žádná data k zobrazení.</EmptyDataTemplate>
+            <EmptyDataTemplate>
+                Žádná data k zobrazení.
+            </EmptyDataTemplate>
 
-            <bp:GridViewTextColumn Value="{value: Id}"
-                                   HeaderText="ID" />
+            <Columns>
 
-            <bp:GridViewTextColumn Value="{value: Name}"
-                                   HeaderText="Název" />
+                <dot:GridViewTextColumn ValueBinding="{value: Id}"
+                                        HeaderText="ID" />
 
-            <bp:GridViewTextColumn Value="{value: Code}"
-                                   HeaderText="Kód" />
+                <dot:GridViewTextColumn ValueBinding="{value: Name}"
+                                        HeaderText="Název" />
 
-            <bp:GridViewTemplateColumn HeaderCssClass="icon">
-                <dot:RouteLink RouteName="{resource: Routes.HeatingZones.HeatingZoneEdit}" Param-Id="{{value: Id}}">
-                    <bp:FAIcon Icon="PencilAltSolid" />
-                </dot:RouteLink>
-            </bp:GridViewTemplateColumn>
+                <dot:GridViewTextColumn ValueBinding="{value: Code}"
+                                        HeaderText="Kód" />
 
-            <bp:GridViewTemplateColumn HeaderCssClass="icon">
-                <dot:LinkButton Click="{command: _root.Delete(Id)}">
-                    <PostBack.Handlers>
-                        <dot:ConfirmPostBackHandler Message="Opravdu chcete zónu smazat?" />
-                    </PostBack.Handlers>
-                    <bp:FAIcon Icon="TrashAltRegular" />
-                </dot:LinkButton>
-            </bp:GridViewTemplateColumn>
+                <dot:GridViewTemplateColumn HeaderCssClass="icon">
+                    <dot:RouteLink RouteName="{resource: Routes.HeatingZones.HeatingZoneEdit}" Param-Id="{{value: Id}}">
+                        <bp:FAIcon Icon="PencilAltSolid" />
+                    </dot:RouteLink>
+                </dot:GridViewTemplateColumn>
 
-        </bp:GridView>
+                <dot:GridViewTemplateColumn HeaderCssClass="icon">
+                    <dot:LinkButton Click="{command: _root.Delete(Id)}">
+                        <PostBack.Handlers>
+                            <dot:ConfirmPostBackHandler Message="Opravdu chcete zónu smazat?" />
+                        </PostBack.Handlers>
+                        <bp:FAIcon Icon="TrashAltRegular" />
+                    </dot:LinkButton>
+                </dot:GridViewTemplateColumn>
+            </Columns>
+
+        </dot:GridView>
     </div>
 </dot:Content>
 

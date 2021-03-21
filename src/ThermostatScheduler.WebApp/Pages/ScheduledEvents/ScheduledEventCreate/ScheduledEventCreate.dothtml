@@ -1,6 +1,6 @@
-﻿@viewModel Scheduler.App.Pages.ScheduledEvents.ScheduledEventCreate.ScheduledEventCreateViewModel, Scheduler.App
+﻿@viewModel ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventCreate.ScheduledEventCreateViewModel, ThermostatScheduler.WebApp
 @masterPage Pages/MasterPage.dotmaster
-@import Scheduler.App
+@import ThermostatScheduler.WebApp
 
 <dot:Content ContentPlaceHolderID="MainContent">
     <div class="page-center">
