@@ -39,4 +39,4 @@ jobs:
         context: ./publish
         file: ./src/Dockerfile
         push: true
-        #tags: hladik/thermostat-scheduler:$GITHUB_SHA,hladik/thermostat-scheduler:latest
+        tags: hladik/thermostat-scheduler:latest
