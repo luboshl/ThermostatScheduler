@@ -24,7 +24,7 @@ jobs:
       run: dotnet restore ./src/ThermostatScheduler.WebApp/ThermostatScheduler.WebApp.csproj
 
     - name: dotnet publish
-      run: dotnet publish ./src/ThermostatScheduler.WebApp/ThermostatScheduler.WebApp.csproj --configuration Release --no-restore --output ./publish'
+      run: dotnet publish ./src/ThermostatScheduler.WebApp/ThermostatScheduler.WebApp.csproj --configuration Release --no-restore --output ./publish
 
     - name: Login to DockerHub
       uses: docker/login-action@v1
