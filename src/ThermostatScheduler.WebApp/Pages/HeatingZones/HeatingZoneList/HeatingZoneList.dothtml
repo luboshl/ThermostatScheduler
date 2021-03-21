@@ -1,0 +1,47 @@
+﻿@viewModel Scheduler.App.Pages.HeatingZones.HeatingZoneList.HeatingZoneListViewModel, Scheduler.App
+@masterPage Pages/MasterPage.dotmaster
+@import Scheduler.App
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div class="page-center">
+        <div class="page-grid-top">
+            <h1>Zóny vytápění</h1>
+
+            <dot:RouteLink Text="Vytvořit novou zónu" RouteName="{resource: Routes.HeatingZones.HeatingZoneCreate}" class="page-button btn-add btn-long" />
+        </div>
+
+        <dot:ValidationSummary />
+
+        <bp:GridView DataSource="{value: HeatingZoneList}" class="page-grid"
+                     ShowTableWhenNoData>
+
+            <EmptyDataTemplate>Žádná data k zobrazení.</EmptyDataTemplate>
+
+            <bp:GridViewTextColumn Value="{value: Id}"
+                                   HeaderText="ID" />
+
+            <bp:GridViewTextColumn Value="{value: Name}"
+                                   HeaderText="Název" />
+
+            <bp:GridViewTextColumn Value="{value: Code}"
+                                   HeaderText="Kód" />
+
+            <bp:GridViewTemplateColumn HeaderCssClass="icon">
+                <dot:RouteLink RouteName="{resource: Routes.HeatingZones.HeatingZoneEdit}" Param-Id="{{value: Id}}">
+                    <bp:FAIcon Icon="PencilAltSolid" />
+                </dot:RouteLink>
+            </bp:GridViewTemplateColumn>
+
+            <bp:GridViewTemplateColumn HeaderCssClass="icon">
+                <dot:LinkButton Click="{command: _root.Delete(Id)}">
+                    <PostBack.Handlers>
+                        <dot:ConfirmPostBackHandler Message="Opravdu chcete zónu smazat?" />
+                    </PostBack.Handlers>
+                    <bp:FAIcon Icon="TrashAltRegular" />
+                </dot:LinkButton>
+            </bp:GridViewTemplateColumn>
+
+        </bp:GridView>
+    </div>
+</dot:Content>
+
