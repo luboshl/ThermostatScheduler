@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DotVVM.BusinessPack.Controls;
+using DotVVM.Framework.Controls;
 using ThermostatScheduler.WebApp.Models;
 using ThermostatScheduler.WebApp.Services;
 
@@ -12,7 +12,7 @@ namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventList
         private readonly IScheduledEventService scheduledEventService;
         private readonly IHeatingZoneService heatingZoneService;
 
-        public BusinessPackDataSet<ScheduledEventListModel> ScheduledEventList { get; set; } = new();
+        public GridViewDataSet<ScheduledEventListModel> ScheduledEventList { get; set; } = new();
         public ICollection<HeatingZoneListModel> HeatingZones { get; set; } = null!;
         public int? SelectedHeatingZoneId { get; set; }
 

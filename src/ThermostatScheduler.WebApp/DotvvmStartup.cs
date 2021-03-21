@@ -42,7 +42,6 @@ namespace ThermostatScheduler.WebApp
 
         public void ConfigureServices(IDotvvmServiceCollection options)
         {
-            options.AddBusinessPack();
             options.AddDefaultTempStorages("temp");
             options.AddStatusPage();
         }

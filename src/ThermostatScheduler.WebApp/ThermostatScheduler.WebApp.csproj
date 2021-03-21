@@ -13,7 +13,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DotVVM.AspNetCore" Version="2.5.0" />
-    <PackageReference Include="DotVVM.BusinessPack" Version="2.5.0" />
     <PackageReference Include="DotVVM.Diagnostics.StatusPage" Version="2.4.0" />
     <PackageReference Include="JsonFlatFileDataStore" Version="2.2.2" />
     <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.2.4" />

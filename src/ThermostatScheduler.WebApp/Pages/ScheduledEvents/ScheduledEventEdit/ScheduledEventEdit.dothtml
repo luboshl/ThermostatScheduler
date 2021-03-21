@@ -8,39 +8,57 @@
         <div class="page-box">
             <h1>Úprava položky časového programu vytápění</h1>
 
-            <bp:FormItem LabelText="ID">
-                <bp:TextBox Text="{value: Model.Id}" Enabled="false" />
-            </bp:FormItem>
+            <div class="form-group">
+                <label class="control-label">ID</label>
+                <div>
+                    <dot:TextBox class="form-control"
+                                 Text="{value: Model.Id}"
+                                 Enabled="false" />
+                </div>
+            </div>
 
-            <bp:FormItem LabelText="Zóna">
-                <bp:DropDownList DataSource="{value: HeatingZones}"
-                                 SelectedValue="{value: Model.HeatingZoneId}"
-                                 ItemTextBinding="{value: Name}"
-                                 ItemValueBinding="{value: Id}"
-                                 Placeholder="Zvolte zónu"
-                                 AutoFocus />
-            </bp:FormItem>
+            <div class="form-group">
+                <label class="control-label">Zóna</label>
+                <div>
+                    <dot:ComboBox DataSource="{value: HeatingZones}"
+                                  SelectedValue="{value: Model.HeatingZoneId}"
+                                  ItemTextBinding="{value: Name}"
+                                  ItemValueBinding="{value: Id}"
+                                  Placeholder="Zvolte zónu"
+                                  AutoFocus="true" />
+                </div>
+            </div>
 
-            <bp:FormItem LabelText="Čas">
-                <bp:TimePicker SelectedTime="{value: Model.Time}" />
-            </bp:FormItem>
+            <div class="form-group">
+                <label class="control-label">Čas</label>
+                <div Validator.Value="{value: Model.Time}">
+                    <dot:TextBox class="form-control"
+                                 Text="{value: Model.Time}"
+                                 FormatString="HH:mm" />
+                </div>
+            </div>
 
-            <bp:FormItem LabelText="Teplota">
-                <bp:NumericUpDown Value="{value: Model.Temperature}"
-                                  MinValue="10"
-                                  MaxValue="30"
-                                  Step="0.5"
-                                  FormatString="N1" />
-            </bp:FormItem>
+            <div class="form-group">
+                <label class="control-label">Teplota</label>
+                <div Validator.Value="{value: Model.Temperature}">
+                    <dot:TextBox class="form-control"
+                                 Text="{value: Model.Temperature}"
+                                 FormatString="N1" />
+                </div>
+            </div>
 
-            <bp:FormItem LabelText="Poznámka">
-                <bp:TextBox Text="{value: Model.Note}" />
-            </bp:FormItem>
+            <div class="form-group">
+                <label class="control-label">Poznámka</label>
+                <div Validator.Value="{value: Model.Note}">
+                    <dot:TextBox class="form-control"
+                                 Text="{value: Model.Note}" />
+                </div>
+            </div>
 
             <div class="btn-container">
-                <bp:Button Text="Uložit"
-                           Click="{command: Save()}"
-                           class="page-button" />
+                <dot:Button Text="Uložit"
+                            Click="{command: Save()}"
+                            class="page-button" />
             </div>
         </div>
     </div>

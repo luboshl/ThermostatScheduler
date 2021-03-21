@@ -32,7 +32,7 @@
 
                 <dot:GridViewTemplateColumn HeaderCssClass="icon">
                     <dot:RouteLink RouteName="{resource: Routes.HeatingZones.HeatingZoneEdit}" Param-Id="{{value: Id}}">
-                        <bp:FAIcon Icon="PencilAltSolid" />
+                        editovat
                     </dot:RouteLink>
                 </dot:GridViewTemplateColumn>
 
@@ -41,7 +41,7 @@
                         <PostBack.Handlers>
                             <dot:ConfirmPostBackHandler Message="Opravdu chcete zónu smazat?" />
                         </PostBack.Handlers>
-                        <bp:FAIcon Icon="TrashAltRegular" />
+                        smazat
                     </dot:LinkButton>
                 </dot:GridViewTemplateColumn>
             </Columns>
