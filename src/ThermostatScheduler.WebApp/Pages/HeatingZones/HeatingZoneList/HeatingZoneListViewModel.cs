@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using DotVVM.BusinessPack.Controls;
+using DotVVM.Framework.Controls;
 using DotVVM.Framework.ViewModel.Validation;
 using ThermostatScheduler.WebApp.Exceptions;
 using ThermostatScheduler.WebApp.Models;
@@ -12,7 +12,7 @@ namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneList
     {
         private readonly IHeatingZoneService heatingZoneService;
 
-        public BusinessPackDataSet<HeatingZoneListModel> HeatingZoneList { get; set; } = new();
+        public GridViewDataSet<HeatingZoneListModel> HeatingZoneList { get; set; } = new();
 
         public HeatingZoneListViewModel(IDependencies dependencies,
                                         IHeatingZoneService heatingZoneService)
