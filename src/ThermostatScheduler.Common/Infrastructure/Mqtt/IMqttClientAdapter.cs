@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using MQTTnet.Client;
 
-namespace Scheduler.Common.Infrastructure.Mqtt
+namespace ThermostatScheduler.Common.Infrastructure.Mqtt
 {
     public interface IMqttClientAdapter
     {

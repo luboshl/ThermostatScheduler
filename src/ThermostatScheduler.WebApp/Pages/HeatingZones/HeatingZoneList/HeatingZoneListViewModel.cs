@@ -2,11 +2,11 @@
 using System.Threading.Tasks;
 using DotVVM.BusinessPack.Controls;
 using DotVVM.Framework.ViewModel.Validation;
-using Scheduler.App.Exceptions;
-using Scheduler.App.Models;
-using Scheduler.App.Services;
+using ThermostatScheduler.WebApp.Exceptions;
+using ThermostatScheduler.WebApp.Models;
+using ThermostatScheduler.WebApp.Services;
 
-namespace Scheduler.App.Pages.HeatingZones.HeatingZoneList
+namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneList
 {
     public class HeatingZoneListViewModel : MasterPageViewModel
     {

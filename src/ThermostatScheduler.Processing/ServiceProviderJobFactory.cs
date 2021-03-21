@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Quartz;
 using Quartz.Spi;
 
-namespace Scheduler.Processing
+namespace ThermostatScheduler.Processing
 {
     public class ServiceProviderJobFactory : IJobFactory
     {

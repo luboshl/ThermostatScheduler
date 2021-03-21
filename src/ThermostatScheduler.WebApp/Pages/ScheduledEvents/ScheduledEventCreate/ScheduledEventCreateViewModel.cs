@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Scheduler.App.Models;
-using Scheduler.App.Services;
+using ThermostatScheduler.WebApp.Models;
+using ThermostatScheduler.WebApp.Services;
 
-namespace Scheduler.App.Pages.ScheduledEvents.ScheduledEventCreate
+namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventCreate
 {
     public class ScheduledEventCreateViewModel : MasterPageViewModel
     {

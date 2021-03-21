@@ -5,19 +5,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
-using Quartz;
-using Scheduler.App.Pages;
-using Scheduler.App.Services;
-using Scheduler.Common.Settings;
-using Scheduler.Persistence.Repositories;
-using Scheduler.Processing;
 using MQTTnet;
 using MQTTnet.Client;
-using Scheduler.Common.Infrastructure;
-using Scheduler.Common.Infrastructure.Mqtt;
+using Quartz;
 using Serilog;
+using ThermostatScheduler.Common.Infrastructure;
+using ThermostatScheduler.Common.Infrastructure.Mqtt;
+using ThermostatScheduler.Common.Settings;
+using ThermostatScheduler.Persistence.Repositories;
+using ThermostatScheduler.Processing;
+using ThermostatScheduler.WebApp.Pages;
+using ThermostatScheduler.WebApp.Services;
 
-namespace Scheduler.App
+namespace ThermostatScheduler.WebApp
 {
     public class Startup
     {

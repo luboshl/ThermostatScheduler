@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Scheduler.Common.Settings
+namespace ThermostatScheduler.Common.Settings
 {
     public class PersistenceSettings
     {

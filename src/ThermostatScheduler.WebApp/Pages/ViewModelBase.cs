@@ -1,6 +1,6 @@
 ﻿using DotVVM.Framework.ViewModel;
 
-namespace Scheduler.App.Pages
+namespace ThermostatScheduler.WebApp.Pages
 {
     public abstract class ViewModelBase : DotvvmViewModelBase
     {

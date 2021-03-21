@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Scheduler.App.Models;
-using Scheduler.App.Services;
+using ThermostatScheduler.WebApp.Models;
+using ThermostatScheduler.WebApp.Services;
 
-namespace Scheduler.App.Pages.HeatingZones.HeatingZoneCreate
+namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneCreate
 {
     public class HeatingZoneCreateViewModel : MasterPageViewModel
     {

@@ -1,4 +1,4 @@
-﻿namespace Scheduler.App.Models
+﻿namespace ThermostatScheduler.WebApp.Models
 {
     public class HeatingZoneListModel
     {

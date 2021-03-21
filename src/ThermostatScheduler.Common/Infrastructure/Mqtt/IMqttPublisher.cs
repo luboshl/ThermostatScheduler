@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Scheduler.Common.Infrastructure.Mqtt
+namespace ThermostatScheduler.Common.Infrastructure.Mqtt
 {
     public interface IMqttPublisher
     {

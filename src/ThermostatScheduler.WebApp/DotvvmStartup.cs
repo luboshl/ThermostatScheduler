@@ -4,7 +4,7 @@ using DotVVM.Framework.ResourceManagement;
 using DotVVM.Framework.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Scheduler.App
+namespace ThermostatScheduler.WebApp
 {
     public class DotvvmStartup : IDotvvmStartup, IDotvvmServiceConfigurator
     {

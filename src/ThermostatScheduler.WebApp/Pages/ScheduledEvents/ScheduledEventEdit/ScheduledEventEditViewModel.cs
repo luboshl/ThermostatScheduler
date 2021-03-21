@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DotVVM.Framework.ViewModel;
-using Scheduler.App.Models;
-using Scheduler.App.Services;
+using ThermostatScheduler.WebApp.Models;
+using ThermostatScheduler.WebApp.Services;
 
-namespace Scheduler.App.Pages.ScheduledEvents.ScheduledEventEdit
+namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventEdit
 {
     public class ScheduledEventEditViewModel : MasterPageViewModel
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Scheduler.Persistence.Model;
+using ThermostatScheduler.Persistence.Model;
 
-namespace Scheduler.Persistence.Repositories
+namespace ThermostatScheduler.Persistence.Repositories
 {
     public interface IRepository<TEntity>
         where TEntity : Entity

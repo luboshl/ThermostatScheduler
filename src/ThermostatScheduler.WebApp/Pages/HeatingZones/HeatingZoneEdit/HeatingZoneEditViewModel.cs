@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using DotVVM.Framework.ViewModel;
-using Scheduler.App.Models;
-using Scheduler.App.Services;
+using ThermostatScheduler.WebApp.Models;
+using ThermostatScheduler.WebApp.Services;
 
-namespace Scheduler.App.Pages.HeatingZones.HeatingZoneEdit
+namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneEdit
 {
     public class HeatingZoneEditViewModel : MasterPageViewModel
     {

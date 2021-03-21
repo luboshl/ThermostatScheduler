@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Scheduler.Common.Infrastructure.Mqtt
+namespace ThermostatScheduler.Common.Infrastructure.Mqtt
 {
     public class MqttOptions
     {

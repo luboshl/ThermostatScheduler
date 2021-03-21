@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Scheduler.Common.Infrastructure
+namespace ThermostatScheduler.Common.Infrastructure
 {
     public class LocalDateTimeProvider : IDateTimeProvider
     {

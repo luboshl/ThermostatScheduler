@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using JsonFlatFileDataStore;
 using Microsoft.Extensions.Options;
-using Scheduler.Common.Settings;
-using Scheduler.Persistence.Model;
+using ThermostatScheduler.Common.Settings;
+using ThermostatScheduler.Persistence.Model;
 
-namespace Scheduler.Persistence.Repositories
+namespace ThermostatScheduler.Persistence.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity>
         where TEntity : Entity

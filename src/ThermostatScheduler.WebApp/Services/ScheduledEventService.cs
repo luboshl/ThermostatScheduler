@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Scheduler.App.Models;
-using Scheduler.Common.Infrastructure;
-using Scheduler.Persistence.Model;
-using Scheduler.Persistence.Repositories;
-using Scheduler.Processing;
+using ThermostatScheduler.Common.Infrastructure;
+using ThermostatScheduler.Persistence.Model;
+using ThermostatScheduler.Persistence.Repositories;
+using ThermostatScheduler.Processing;
+using ThermostatScheduler.WebApp.Models;
 
-namespace Scheduler.App.Services
+namespace ThermostatScheduler.WebApp.Services
 {
     public class ScheduledEventService : IScheduledEventService
     {

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Quartz;
 
-namespace Scheduler.Processing
+namespace ThermostatScheduler.Processing
 {
     public class SetTemperatureJob : IJob
     {

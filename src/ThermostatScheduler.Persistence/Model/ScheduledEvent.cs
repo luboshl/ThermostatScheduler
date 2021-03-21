@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Scheduler.Persistence.Model
+namespace ThermostatScheduler.Persistence.Model
 {
     public class ScheduledEvent : Entity
     {

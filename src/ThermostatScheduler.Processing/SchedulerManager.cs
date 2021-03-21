@@ -6,10 +6,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Quartz;
 using Quartz.Impl;
-using Scheduler.Persistence.Model;
-using Scheduler.Persistence.Repositories;
+using ThermostatScheduler.Persistence.Model;
+using ThermostatScheduler.Persistence.Repositories;
 
-namespace Scheduler.Processing
+namespace ThermostatScheduler.Processing
 {
     public class SchedulerManager : ISchedulerManager, IHostedService
     {

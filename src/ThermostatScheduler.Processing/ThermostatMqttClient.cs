@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Scheduler.Common.Infrastructure.Mqtt;
+using ThermostatScheduler.Common.Infrastructure.Mqtt;
 
-namespace Scheduler.Processing
+namespace ThermostatScheduler.Processing
 {
     public class ThermostatMqttClient : IThermostatClient
     {

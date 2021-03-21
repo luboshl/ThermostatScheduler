@@ -2,7 +2,7 @@
 using DotVVM.Framework.Configuration;
 using DotVVM.Framework.Routing;
 
-namespace Scheduler.App
+namespace ThermostatScheduler.WebApp
 {
     public class CustomRouteStrategy : DefaultRouteStrategy
     {
