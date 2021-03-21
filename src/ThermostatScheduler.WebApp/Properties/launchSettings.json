@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Scheduler": {
+    "ThermostatScheduler": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
