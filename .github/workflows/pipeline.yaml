@@ -21,4 +21,4 @@ jobs:
     - name: dotnet restore
       run: dotnet restore ./src/ThermostatScheduler.WebApp/ThermostatScheduler.WebApp.csproj
     - name: dotnet publish
-      run: dotnet publish ./src/ThermostatScheduler.WebApp/ThermostatScheduler.WebApp.csproj --no-restore
+      run: dotnet publish ./src/ThermostatScheduler.WebApp/ThermostatScheduler.WebApp.csproj --configuration Release --no-restore
