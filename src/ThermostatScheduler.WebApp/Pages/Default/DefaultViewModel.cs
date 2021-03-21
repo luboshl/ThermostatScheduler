@@ -1,4 +1,4 @@
-﻿namespace Scheduler.App.Pages.Default
+﻿namespace ThermostatScheduler.WebApp.Pages.Default
 {
     public class DefaultViewModel : MasterPageViewModel
     {

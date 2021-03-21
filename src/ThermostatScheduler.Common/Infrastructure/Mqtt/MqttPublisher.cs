@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using AsyncAwaitBestPractices;
 using Microsoft.Extensions.Logging;
 using MQTTnet;
 using MQTTnet.Client;
 
-namespace Scheduler.Common.Infrastructure.Mqtt
+namespace ThermostatScheduler.Common.Infrastructure.Mqtt
 {
     public class MqttPublisher : IMqttPublisher
     {

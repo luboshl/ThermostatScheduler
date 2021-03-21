@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Scheduler.App.Models;
+using ThermostatScheduler.WebApp.Models;
 
-namespace Scheduler.App.Services
+namespace ThermostatScheduler.WebApp.Services
 {
     public interface IHeatingZoneService
     {

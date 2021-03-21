@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DotVVM.BusinessPack.Controls;
-using Scheduler.App.Models;
-using Scheduler.App.Services;
+using ThermostatScheduler.WebApp.Models;
+using ThermostatScheduler.WebApp.Services;
 
-namespace Scheduler.App.Pages.ScheduledEvents.ScheduledEventList
+namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventList
 {
     public class ScheduledEventListViewModel : MasterPageViewModel
     {

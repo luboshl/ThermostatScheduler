@@ -1,4 +1,4 @@
-﻿namespace Scheduler.Persistence.Model
+﻿namespace ThermostatScheduler.Persistence.Model
 {
     public class HeatingZone : Entity
     {

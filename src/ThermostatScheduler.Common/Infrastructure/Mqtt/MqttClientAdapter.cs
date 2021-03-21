@@ -8,7 +8,7 @@ using MQTTnet.Client.Connecting;
 using MQTTnet.Client.Disconnecting;
 using MQTTnet.Client.Options;
 
-namespace Scheduler.Common.Infrastructure.Mqtt
+namespace ThermostatScheduler.Common.Infrastructure.Mqtt
 {
     public class MqttClientAdapter : IInitializable, IMqttClientAdapter
     {

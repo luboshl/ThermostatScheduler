@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Scheduler.Common.Infrastructure
+namespace ThermostatScheduler.Common.Infrastructure
 {
     public interface IInitializable
     {

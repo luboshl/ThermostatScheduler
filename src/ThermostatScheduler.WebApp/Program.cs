@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Scheduler.Common.Infrastructure;
 using Serilog;
+using ThermostatScheduler.Common.Infrastructure;
 
-namespace Scheduler.App
+namespace ThermostatScheduler.WebApp
 {
     public class Program
     {

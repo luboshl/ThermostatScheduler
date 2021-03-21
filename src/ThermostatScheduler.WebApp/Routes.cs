@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Scheduler.App
+namespace ThermostatScheduler.WebApp
 {
     public static class Routes
     {

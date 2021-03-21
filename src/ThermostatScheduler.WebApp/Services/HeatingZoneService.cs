@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Scheduler.App.Exceptions;
-using Scheduler.App.Models;
-using Scheduler.Persistence;
-using Scheduler.Persistence.Model;
-using Scheduler.Persistence.Repositories;
+using ThermostatScheduler.Persistence.Model;
+using ThermostatScheduler.Persistence.Repositories;
+using ThermostatScheduler.WebApp.Exceptions;
+using ThermostatScheduler.WebApp.Models;
 
-namespace Scheduler.App.Services
+namespace ThermostatScheduler.WebApp.Services
 {
     public class HeatingZoneService : IHeatingZoneService
     {

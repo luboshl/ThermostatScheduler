@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Scheduler.App.Exceptions
+namespace ThermostatScheduler.WebApp.Exceptions
 {
     public class EntityReferencedException : Exception
     {
