@@ -1,6 +1,6 @@
-﻿@viewModel Scheduler.App.Pages.HeatingZones.HeatingZoneCreate.HeatingZoneCreateViewModel, Scheduler.App
+﻿@viewModel ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneCreate.HeatingZoneCreateViewModel, ThermostatScheduler.WebApp
 @masterPage Pages/MasterPage.dotmaster
-@import Scheduler.App
+@import ThermostatScheduler.WebApp
 
 <dot:Content ContentPlaceHolderID="MainContent">
     <div class="page-center">

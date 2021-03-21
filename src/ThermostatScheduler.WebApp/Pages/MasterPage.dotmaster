@@ -1,5 +1,5 @@
-﻿@viewModel Scheduler.App.Pages.MasterPageViewModel, Scheduler.App
-@import Scheduler.App
+﻿@viewModel ThermostatScheduler.WebApp.Pages.MasterPageViewModel, ThermostatScheduler.WebApp
+@import ThermostatScheduler.WebApp
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
