@@ -87,6 +87,13 @@ namespace ThermostatScheduler.WebApp.Services
             RestartScheduler();
         }
 
+        public async Task<int> CloneAsync(int id)
+        {
+            var original = await scheduledEventRepository.GetByIdAsync(id);
+            var clone = new ScheduledEvent(original.HeatingZoneId, original.Time, original.Temperature, original.Note);
+            return await scheduledEventRepository.CreateAsync(clone);
+        }
+
         private DateTime GetDateTime(TimeSpan time)
         {
             return dateTimeProvider.Now.Date.Add(time);
