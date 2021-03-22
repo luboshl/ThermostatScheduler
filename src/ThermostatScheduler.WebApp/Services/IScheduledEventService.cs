@@ -11,5 +11,6 @@ namespace ThermostatScheduler.WebApp.Services
         Task CreateAsync(ScheduledEventDetailModel model);
         Task UpdateAsync(ScheduledEventDetailModel model);
         Task DeleteAsync(int id);
+        Task<int> CloneAsync(int id);
     }
 }

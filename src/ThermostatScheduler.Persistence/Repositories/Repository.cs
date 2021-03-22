@@ -47,7 +47,7 @@ namespace ThermostatScheduler.Persistence.Repositories
             return Task.FromResult(result);
         }
 
-        public async Task CreateAsync(TEntity entity)
+        public async Task<int> CreateAsync(TEntity entity)
         {
             var succeeded = await Collection.InsertOneAsync(entity);
             if (!succeeded)
@@ -61,6 +61,8 @@ namespace ThermostatScheduler.Persistence.Repositories
                 entity.Id = 1;
                 await UpdateAsync(0, entity, false);
             }
+
+            return entity.Id;
         }
 
         public Task UpdateAsync(int id, TEntity entity)

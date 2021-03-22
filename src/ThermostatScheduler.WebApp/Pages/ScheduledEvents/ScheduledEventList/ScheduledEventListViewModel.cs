@@ -55,6 +55,12 @@ namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventList
             ScheduledEventList.RequestRefresh();
         }
 
+        public async Task Clone(int id)
+        {
+            var cloneId = await scheduledEventService.CloneAsync(id);
+            Context.RedirectToRoute(Routes.ScheduledEvents.ScheduledEventEdit, new { Id = cloneId });
+        }
+
         public void ReloadData()
         {
             ScheduledEventList.RequestRefresh();

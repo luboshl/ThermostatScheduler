@@ -10,7 +10,7 @@ namespace ThermostatScheduler.Persistence.Repositories
     {
         Task<ICollection<TEntity>> GetAsync(Func<TEntity, bool>? predicate = null);
         Task<TEntity> GetByIdAsync(int id);
-        Task CreateAsync(TEntity entity);
+        Task<int> CreateAsync(TEntity entity);
         Task UpdateAsync(int id, TEntity entity);
         Task DeleteAsync(int id);
     }
