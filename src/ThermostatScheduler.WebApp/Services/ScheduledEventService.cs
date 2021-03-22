@@ -67,6 +67,9 @@ namespace ThermostatScheduler.WebApp.Services
         public async Task CreateAsync(ScheduledEventDetailModel model)
         {
             var entity = new ScheduledEvent(model.HeatingZoneId, model.Time.TimeOfDay, model.Temperature, model.Note);
+
+            await ValidateHeatingZone(model.HeatingZoneId);
+
             await scheduledEventRepository.CreateAsync(entity);
             RestartScheduler();
         }
@@ -102,6 +105,15 @@ namespace ThermostatScheduler.WebApp.Services
                     logger.LogError(ex, "Restarting of scheduler failed.");
                 }
             });
+        }
+
+        private async Task ValidateHeatingZone(int heatingZoneId)
+        {
+            var heatingZones = await heatingZoneRepository.GetAsync(x => x.Id == heatingZoneId);
+            if (heatingZones.Count == 0)
+            {
+                throw new Exception($"Heating zone not found by ID {heatingZoneId}.");
+            }
         }
     }
 }
