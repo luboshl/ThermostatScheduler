@@ -6,6 +6,7 @@ namespace ThermostatScheduler.Common.Infrastructure.Mqtt
     {
         public static string Name = "Mqtt";
 
+        public bool Enabled { get; set; }
         public string ClientId { get; set; } = null!;
         public string ServerAddress { get; set; } = null!;
         public int ServerPort { get; set; }
