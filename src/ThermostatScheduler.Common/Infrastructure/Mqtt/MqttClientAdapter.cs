@@ -33,6 +33,11 @@ namespace ThermostatScheduler.Common.Infrastructure.Mqtt
 
         public Task InitializeAsync(CancellationToken ct)
         {
+            if (!options.Enabled)
+            {
+                return Task.CompletedTask;
+            }
+
             Client.UseConnectedHandler(OnConnected);
             Client.UseDisconnectedHandler(OnDisconnectedAsync);
             return ConnectMqttClientSafeAsync(ct);
