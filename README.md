@@ -1,6 +1,6 @@
 # Thermostat Scheduler
 
-Simple web application for personal use that allows to schedule temperature for individual zones. When scheduled event occurs message with temperature and zone is publisehed into MQTT topic. In my configuration message is processed in Home Assistant and Node-RED.
+Simple web application for personal use that allows to schedule temperature for individual zones. When scheduled event occurs message with temperature and zone is published into MQTT topic. In my configuration message is processed in Home Assistant and Node-RED.
 
 Application is published as Docker image `hladik/thermostat-scheduler`.
 
