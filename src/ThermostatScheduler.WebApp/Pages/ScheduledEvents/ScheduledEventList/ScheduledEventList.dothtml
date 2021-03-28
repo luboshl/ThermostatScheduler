@@ -20,50 +20,54 @@
                              Changed="{command: ReloadData()}" />
         </bp:FormItem>--%>
 
-    <dot:GridView DataSource="{value: ScheduledEventList}" class="page-grid"
-                  ShowTableWhenNoData="true">
+        <dot:GridView DataSource="{value: ScheduledEventList}" class="page-grid"
+                      ShowTableWhenNoData="true">
 
-        <EmptyDataTemplate>Žádná data k zobrazení.</EmptyDataTemplate>
+            <EmptyDataTemplate>Žádná data k zobrazení.</EmptyDataTemplate>
 
-        <dot:GridViewTextColumn ValueBinding="{value: Id}"
-                                HeaderText="ID" />
+            <dot:GridViewTextColumn ValueBinding="{value: Id}"
+                                    HeaderText="ID" />
 
-        <dot:GridViewTextColumn ValueBinding="{value: HeatingZoneName}"
-                                HeaderText="Zóna" />
+            <dot:GridViewTextColumn ValueBinding="{value: HeatingZoneName}"
+                                    HeaderText="Zóna" />
 
-        <dot:GridViewTextColumn ValueBinding="{value: Time}"
-                                HeaderText="Čas"
-                                FormatString="HH:mm" />
+            <dot:GridViewTextColumn ValueBinding="{value: Time}"
+                                    HeaderText="Čas"
+                                    FormatString="HH:mm" />
 
-        <dot:GridViewTextColumn ValueBinding="{value: Temperature}"
-                                HeaderText="Teplota (°C)"
-                                FormatString="N1" />
+            <dot:GridViewCheckBoxColumn ValueBinding="{value: IsActive}"
+                                        HeaderText="Aktivní"
+                                        IsEditable="false" />
 
-        <dot:GridViewTextColumn ValueBinding="{value: Description}"
-                                HeaderText="Poznámka" />
+            <dot:GridViewTextColumn ValueBinding="{value: Temperature}"
+                                    HeaderText="Teplota (°C)"
+                                    FormatString="N1" />
 
-        <dot:GridViewTemplateColumn>
-            <dot:RouteLink RouteName="{resource: Routes.ScheduledEvents.ScheduledEventEdit}" Param-Id="{{value: Id}}">
-                editovat
-            </dot:RouteLink>
-        </dot:GridViewTemplateColumn>
+            <dot:GridViewTextColumn ValueBinding="{value: Description}"
+                                    HeaderText="Poznámka" />
 
-        <dot:GridViewTemplateColumn>
-            <dot:LinkButton Click="{command: _root.Clone(Id)}">
-                klonovat
-            </dot:LinkButton>
-        </dot:GridViewTemplateColumn>
+            <dot:GridViewTemplateColumn>
+                <dot:RouteLink RouteName="{resource: Routes.ScheduledEvents.ScheduledEventEdit}" Param-Id="{{value: Id}}">
+                    editovat
+                </dot:RouteLink>
+            </dot:GridViewTemplateColumn>
 
-        <dot:GridViewTemplateColumn>
-            <dot:LinkButton Click="{command: _root.Delete(Id)}">
-                <PostBack.Handlers>
-                    <dot:ConfirmPostBackHandler Message="Opravdu chcete záznam smazat?" />
-                </PostBack.Handlers>
-                smazat
-            </dot:LinkButton>
-        </dot:GridViewTemplateColumn>
+            <dot:GridViewTemplateColumn>
+                <dot:LinkButton Click="{command: _root.Clone(Id)}">
+                    klonovat
+                </dot:LinkButton>
+            </dot:GridViewTemplateColumn>
 
-    </dot:GridView>
+            <dot:GridViewTemplateColumn>
+                <dot:LinkButton Click="{command: _root.Delete(Id)}">
+                    <PostBack.Handlers>
+                        <dot:ConfirmPostBackHandler Message="Opravdu chcete záznam smazat?" />
+                    </PostBack.Handlers>
+                    smazat
+                </dot:LinkButton>
+            </dot:GridViewTemplateColumn>
+
+        </dot:GridView>
     </div>
 </dot:Content>
 

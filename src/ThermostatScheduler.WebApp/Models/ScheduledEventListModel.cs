@@ -10,8 +10,15 @@ namespace ThermostatScheduler.WebApp.Models
         public DateTime Time { get; set; }
         public double? Temperature { get; set; }
         public string? Description { get; set; }
+        public bool IsActive { get; set; }
 
-        public ScheduledEventListModel(int id, int heatingZoneId, string heatingZoneName, DateTime time, double? temperature, string? description)
+        public ScheduledEventListModel(int id,
+                                       int heatingZoneId,
+                                       string heatingZoneName,
+                                       DateTime time,
+                                       double? temperature,
+                                       string? description,
+                                       bool isActive)
         {
             Id = id;
             HeatingZoneId = heatingZoneId;
@@ -19,6 +26,7 @@ namespace ThermostatScheduler.WebApp.Models
             Time = time;
             Temperature = temperature;
             Description = description;
+            IsActive = isActive;
         }
 
         public ScheduledEventListModel()

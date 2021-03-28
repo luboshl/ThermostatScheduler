@@ -51,7 +51,8 @@ namespace ThermostatScheduler.WebApp
             services
                 .AddTransient<IHeatingZoneService, HeatingZoneService>()
                 .AddTransient<IScheduledEventService, ScheduledEventService>()
-                .AddTransient<IThermostatClient, ThermostatMqttClient>();
+                .AddTransient<IThermostatClient, ThermostatMqttClient>()
+                .AddTransient<ICurrentScheduleCalculator, CurrentScheduleCalculator>();
             services
                 .AddSingleton<SchedulerManager>()
                 .AddSingleton<ISchedulerManager>(sp => sp.GetRequiredService<SchedulerManager>())

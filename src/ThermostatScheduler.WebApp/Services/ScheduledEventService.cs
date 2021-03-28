@@ -19,18 +19,21 @@ namespace ThermostatScheduler.WebApp.Services
         private readonly IRepository<HeatingZone> heatingZoneRepository;
         private readonly IDateTimeProvider dateTimeProvider;
         private readonly ISchedulerManager schedulerManager;
+        private readonly ICurrentScheduleCalculator currentScheduleCalculator;
 
         public ScheduledEventService(ILogger<ScheduledEventService> logger,
                                      IRepository<ScheduledEvent> scheduledEventRepository,
                                      IRepository<HeatingZone> heatingZoneRepository,
                                      IDateTimeProvider dateTimeProvider,
-                                     ISchedulerManager schedulerManager)
+                                     ISchedulerManager schedulerManager,
+                                     ICurrentScheduleCalculator currentScheduleCalculator)
         {
             this.logger = logger;
             this.scheduledEventRepository = scheduledEventRepository;
             this.heatingZoneRepository = heatingZoneRepository;
             this.dateTimeProvider = dateTimeProvider;
             this.schedulerManager = schedulerManager;
+            this.currentScheduleCalculator = currentScheduleCalculator;
         }
 
         public async Task<ICollection<ScheduledEventListModel>> GetAllAsync()
@@ -38,6 +41,7 @@ namespace ThermostatScheduler.WebApp.Services
             var heatingZones = await heatingZoneRepository.GetAsync();
             var heatingZonesById = heatingZones.ToDictionary(x => x.Id);
             var scheduledEvent = await scheduledEventRepository.GetAsync();
+            var currentSchedules = currentScheduleCalculator.GetCurrentSchedules(scheduledEvent);
 
             return scheduledEvent.Select(x =>
                     new ScheduledEventListModel(
@@ -46,7 +50,8 @@ namespace ThermostatScheduler.WebApp.Services
                         heatingZonesById[x.HeatingZoneId].Name,
                         GetDateTime(x.Time),
                         x.Temperature,
-                        x.Note))
+                        x.Note,
+                        currentSchedules.Contains(x)))
                 .ToList();
         }
 
@@ -60,7 +65,7 @@ namespace ThermostatScheduler.WebApp.Services
                 heatingZone.Id,
                 heatingZone.Name,
                 GetDateTime(scheduledEvent.Time),
-                (double)scheduledEvent.Temperature,
+                scheduledEvent.Temperature,
                 scheduledEvent.Note);
         }
 
