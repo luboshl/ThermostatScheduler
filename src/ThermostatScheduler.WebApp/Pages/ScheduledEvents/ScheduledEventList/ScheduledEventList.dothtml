@@ -32,14 +32,12 @@
                                     HeaderText="Zóna" />
 
             <dot:GridViewTextColumn ValueBinding="{value: Time}"
+                                    CssClass="{value: IsActive ? 'active-scheule' : '' }"
                                     HeaderText="Čas"
                                     FormatString="HH:mm" />
 
-            <dot:GridViewCheckBoxColumn ValueBinding="{value: IsActive}"
-                                        HeaderText="Aktivní"
-                                        IsEditable="false" />
-
             <dot:GridViewTextColumn ValueBinding="{value: Temperature}"
+                                    CssClass="{value: IsActive ? 'active-scheule' : '' }"
                                     HeaderText="Teplota (°C)"
                                     FormatString="N1" />
 

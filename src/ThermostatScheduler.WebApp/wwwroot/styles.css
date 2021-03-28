@@ -222,6 +222,8 @@ textarea.page-input {
 
 .page-grid tbody tr:nth-child(2n + 0) { background: #F9F7F7; }
 
+.active-scheule { background: #85e085; }
+
 /*
 .page-grid tbody td:last-child { text-align: right; }
 
