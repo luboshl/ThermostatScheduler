@@ -34,10 +34,10 @@ namespace ThermostatScheduler.WebApp
         private void ConfigureResources(DotvvmConfiguration config, string applicationPath)
         {
             // register custom resources and adjust paths to the built-in resources
-            config.Resources.Register("Styles", new StylesheetResource()
-            {
-                Location = new UrlResourceLocation("~/styles.css")
-            });
+            //config.Resources.Register("Styles", new StylesheetResource()
+            //{
+            //    Location = new UrlResourceLocation("~/styles.css")
+            //});
         }
 
         public void ConfigureServices(IDotvvmServiceCollection options)
