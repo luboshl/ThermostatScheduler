@@ -4,7 +4,7 @@
 
 <dot:Content ContentPlaceHolderID="MainContent">
     <h1 class="mb-4">Časový program vytápění</h1>
-
+ 
     <dot:RouteLink Text="Vytvořit nový zánam"
                     RouteName="{resource: Routes.ScheduledEvents.ScheduledEventCreate}"
                     class="btn btn-primary mb-3" />
@@ -48,35 +48,32 @@
                                 HeaderText="Teplota"
                                 HeaderCssClass="table-light" />
 
-        <dot:GridViewTextColumn ValueBinding="{value: Description}"
-                                HeaderText="Poznámka"
-                                HeaderCssClass="table-light" />
-
-        <dot:GridViewTemplateColumn HeaderCssClass="table-light">
+        <dot:GridViewTemplateColumn HeaderText="Akce"
+                                    HeaderCssClass="table-light">
             <dot:RouteLink RouteName="{resource: Routes.ScheduledEvents.ScheduledEventEdit}" 
                             Param-Id="{{value: Id}}"
-                            class="btn btn-primary btn-sm">
-                Editovat
+                            class="btn btn-outline-primary btn-sm">
+                <i class="fa fa-pen"></i>
             </dot:RouteLink>
-        </dot:GridViewTemplateColumn>
 
-        <dot:GridViewTemplateColumn HeaderCssClass="table-light">
             <dot:LinkButton Click="{command: _root.Clone(Id)}"
-                            class="btn btn-primary btn-sm">
-                Klonovat
+                            class="btn btn-outline-primary btn-sm">
+                <i class="fa fa-clone"></i>
             </dot:LinkButton>
-        </dot:GridViewTemplateColumn>
 
-        <dot:GridViewTemplateColumn HeaderCssClass="table-light">
             <dot:LinkButton Click="{command: _root.Delete(Id)}"
-                            class="btn btn-primary btn-sm">
+                            class="btn btn-outline-danger btn-sm">
                 <PostBack.Handlers>
                     <dot:ConfirmPostBackHandler Message="Opravdu chcete záznam smazat?" />
                 </PostBack.Handlers>
-                Smazat
+                <i class="fa fa-trash-alt"></i>
             </dot:LinkButton>
+
         </dot:GridViewTemplateColumn>
 
+        <dot:GridViewTextColumn ValueBinding="{value: Description}"
+                                HeaderText="Poznámka"
+                                HeaderCssClass="table-light" />
     </dot:GridView>
 
 </dot:Content>

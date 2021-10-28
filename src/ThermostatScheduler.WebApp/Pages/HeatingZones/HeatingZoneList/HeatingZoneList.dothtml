@@ -31,21 +31,20 @@
                                     HeaderText="Kód" 
                                     HeaderCssClass="table-light"/>
 
-            <dot:GridViewTemplateColumn HeaderCssClass="table-light">
+            <dot:GridViewTemplateColumn HeaderText="Akce" 
+                                        HeaderCssClass="table-light">
                 <dot:RouteLink RouteName="{resource: Routes.HeatingZones.HeatingZoneEdit}" 
                                Param-Id="{{value: Id}}"
-                               class="btn btn-primary btn-sm">
-                    Editovat
+                               class="btn btn-outline-primary btn-sm">
+                <i class="fa fa-pen"></i>
                 </dot:RouteLink>
-            </dot:GridViewTemplateColumn>
-
-            <dot:GridViewTemplateColumn HeaderCssClass="table-light">
+    
                 <dot:LinkButton Click="{command: _root.Delete(Id)}"
-                                class="btn btn-primary btn-sm">
+                                class="btn btn-outline-danger btn-sm">
                     <PostBack.Handlers>
                         <dot:ConfirmPostBackHandler Message="Opravdu chcete zónu smazat?" />
                     </PostBack.Handlers>
-                    Smazat
+                    <i class="fa fa-trash-alt"></i>
                 </dot:LinkButton>
             </dot:GridViewTemplateColumn>
         </Columns>
