@@ -8,7 +8,7 @@ namespace ThermostatScheduler.WebApp.Models
         public int HeatingZoneId { get; set; }
         public string HeatingZoneName { get; set; } = null!;
         public DateTime Time { get; set; }
-        public double? Temperature { get; set; }
+        public string? Temperature { get; set; }
         public string? Description { get; set; }
         public bool IsActive { get; set; }
 
@@ -24,7 +24,7 @@ namespace ThermostatScheduler.WebApp.Models
             HeatingZoneId = heatingZoneId;
             HeatingZoneName = heatingZoneName;
             Time = time;
-            Temperature = temperature;
+            Temperature = temperature != null ? temperature?.ToString("N1") + "°C" : null;
             Description = description;
             IsActive = isActive;
         }

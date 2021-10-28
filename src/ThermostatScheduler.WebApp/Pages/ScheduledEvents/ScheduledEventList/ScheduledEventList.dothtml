@@ -45,8 +45,7 @@
 
         <dot:GridViewTextColumn ValueBinding="{value: Temperature}"
                                 CssClass="{value: IsActive ? 'table-primary' : '' }"
-                                HeaderText="Teplota (°C)"
-                                FormatString="N1"
+                                HeaderText="Teplota"
                                 HeaderCssClass="table-light" />
 
         <dot:GridViewTextColumn ValueBinding="{value: Description}"
