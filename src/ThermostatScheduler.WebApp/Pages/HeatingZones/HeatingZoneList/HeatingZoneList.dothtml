@@ -3,50 +3,54 @@
 @import ThermostatScheduler.WebApp
 
 <dot:Content ContentPlaceHolderID="MainContent">
-    <div class="page-center">
-        <div class="page-grid-top">
-            <h1>Zóny vytápění</h1>
+    <h1 class="mb-4">Zóny vytápění</h1>
+            
+    <dot:RouteLink Text="Vytvořit novou zónu"
+                   RouteName="{resource: Routes.HeatingZones.HeatingZoneCreate}"
+                   class="btn btn-primary mb-3" />
 
-            <dot:RouteLink Text="Vytvořit novou zónu" RouteName="{resource: Routes.HeatingZones.HeatingZoneCreate}" class="page-button btn-add btn-long" />
-        </div>
+    <dot:GridView DataSource="{value: HeatingZoneList}"
+                  ShowTableWhenNoData="true"
+                  class="table table-hover table-sm">
 
-        <dot:ValidationSummary />
+        <EmptyDataTemplate>
+            Žádná data k zobrazení.
+        </EmptyDataTemplate>
 
-        <dot:GridView DataSource="{value: HeatingZoneList}" class="page-grid"
-                      ShowTableWhenNoData="true">
+        <Columns>
 
-            <EmptyDataTemplate>
-                Žádná data k zobrazení.
-            </EmptyDataTemplate>
+            <dot:GridViewTextColumn ValueBinding="{value: Id}"
+                                    HeaderText="ID"
+                                    HeaderCssClass="table-light" />
 
-            <Columns>
+            <dot:GridViewTextColumn ValueBinding="{value: Name}"
+                                    HeaderText="Název"
+                                    HeaderCssClass="table-light" />
 
-                <dot:GridViewTextColumn ValueBinding="{value: Id}"
-                                        HeaderText="ID" />
+            <dot:GridViewTextColumn ValueBinding="{value: Code}"
+                                    HeaderText="Kód" 
+                                    HeaderCssClass="table-light"/>
 
-                <dot:GridViewTextColumn ValueBinding="{value: Name}"
-                                        HeaderText="Název" />
+            <dot:GridViewTemplateColumn HeaderCssClass="table-light">
+                <dot:RouteLink RouteName="{resource: Routes.HeatingZones.HeatingZoneEdit}" 
+                               Param-Id="{{value: Id}}"
+                               class="btn btn-primary btn-sm">
+                    Editovat
+                </dot:RouteLink>
+            </dot:GridViewTemplateColumn>
 
-                <dot:GridViewTextColumn ValueBinding="{value: Code}"
-                                        HeaderText="Kód" />
+            <dot:GridViewTemplateColumn HeaderCssClass="table-light">
+                <dot:LinkButton Click="{command: _root.Delete(Id)}"
+                                class="btn btn-primary btn-sm">
+                    <PostBack.Handlers>
+                        <dot:ConfirmPostBackHandler Message="Opravdu chcete zónu smazat?" />
+                    </PostBack.Handlers>
+                    Smazat
+                </dot:LinkButton>
+            </dot:GridViewTemplateColumn>
+        </Columns>
 
-                <dot:GridViewTemplateColumn HeaderCssClass="icon">
-                    <dot:RouteLink RouteName="{resource: Routes.HeatingZones.HeatingZoneEdit}" Param-Id="{{value: Id}}">
-                        editovat
-                    </dot:RouteLink>
-                </dot:GridViewTemplateColumn>
+    </dot:GridView>
 
-                <dot:GridViewTemplateColumn HeaderCssClass="icon">
-                    <dot:LinkButton Click="{command: _root.Delete(Id)}">
-                        <PostBack.Handlers>
-                            <dot:ConfirmPostBackHandler Message="Opravdu chcete zónu smazat?" />
-                        </PostBack.Handlers>
-                        smazat
-                    </dot:LinkButton>
-                </dot:GridViewTemplateColumn>
-            </Columns>
-
-        </dot:GridView>
-    </div>
 </dot:Content>
 

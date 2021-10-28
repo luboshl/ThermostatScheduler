@@ -3,73 +3,82 @@
 @import ThermostatScheduler.WebApp
 
 <dot:Content ContentPlaceHolderID="MainContent">
-    <div class="page-center">
-        <div class="page-grid-top">
-            <h1>Časový program vytápění</h1>
+    <h1 class="mb-4">Časový program vytápění</h1>
 
-            <dot:RouteLink Text="Vytvořit nový zánam" RouteName="{resource: Routes.ScheduledEvents.ScheduledEventCreate}" class="page-button btn-add btn-long" />
-        </div>
+    <dot:RouteLink Text="Vytvořit nový zánam"
+                    RouteName="{resource: Routes.ScheduledEvents.ScheduledEventCreate}"
+                    class="btn btn-primary mb-3" />
 
-        <%--<bp:FormItem LabelText="Filtr zóny">
-            <bp:DropDownList DataSource="{value: HeatingZones}"
-                             SelectedValue="{value: SelectedHeatingZoneId}"
-                             ItemTextBinding="{value: Name}"
-                             ItemValueBinding="{value: Id}"
-                             Placeholder="(Všechny zóny)"
-                             AllowUnselect
-                             Changed="{command: ReloadData()}" />
-        </bp:FormItem>--%>
+    <%--<bp:FormItem LabelText="Filtr zóny">
+        <bp:DropDownList DataSource="{value: HeatingZones}"
+                            SelectedValue="{value: SelectedHeatingZoneId}"
+                            ItemTextBinding="{value: Name}"
+                            ItemValueBinding="{value: Id}"
+                            Placeholder="(Všechny zóny)"
+                            AllowUnselect
+                            Changed="{command: ReloadData()}" />
+    </bp:FormItem>--%>
 
-        <dot:GridView DataSource="{value: ScheduledEventList}" class="page-grid"
-                      ShowTableWhenNoData="true">
+    <dot:GridView DataSource="{value: ScheduledEventList}"
+                    ShowTableWhenNoData="true"
+                    class="table table-hover table-sm">
 
-            <EmptyDataTemplate>Žádná data k zobrazení.</EmptyDataTemplate>
+        <EmptyDataTemplate>Žádná data k zobrazení.</EmptyDataTemplate>
 
-            <RowDecorators>
-                <dot:Decorator class="{value: IsActive ? 'active-scheule-row' : '' }" />
-            </RowDecorators>
+        <RowDecorators>
+            <dot:Decorator class="{value: IsActive ? 'table-primary' : '' }" />
+        </RowDecorators>
 
-            <dot:GridViewTextColumn ValueBinding="{value: Id}"
-                                    HeaderText="ID" />
+        <dot:GridViewTextColumn ValueBinding="{value: Id}"
+                                HeaderText="ID"
+                                HeaderCssClass="table-light" />
 
-            <dot:GridViewTextColumn ValueBinding="{value: HeatingZoneName}"
-                                    HeaderText="Zóna" />
+        <dot:GridViewTextColumn ValueBinding="{value: HeatingZoneName}"
+                                HeaderText="Zóna"
+                                HeaderCssClass="table-light" />
 
-            <dot:GridViewTextColumn ValueBinding="{value: Time}"
-                                    CssClass="{value: IsActive ? 'active-scheule-row' : '' }"
-                                    HeaderText="Čas"
-                                    FormatString="HH:mm" />
+        <dot:GridViewTextColumn ValueBinding="{value: Time}"
+                                CssClass="{value: IsActive ? 'table-primary' : '' }"
+                                HeaderText="Čas"
+                                FormatString="HH:mm"
+                                HeaderCssClass="table-light" />
 
-            <dot:GridViewTextColumn ValueBinding="{value: Temperature}"
-                                    CssClass="{value: IsActive ? 'active-scheule-row' : '' }"
-                                    HeaderText="Teplota (°C)"
-                                    FormatString="N1" />
+        <dot:GridViewTextColumn ValueBinding="{value: Temperature}"
+                                CssClass="{value: IsActive ? 'table-primary' : '' }"
+                                HeaderText="Teplota (°C)"
+                                FormatString="N1"
+                                HeaderCssClass="table-light" />
 
-            <dot:GridViewTextColumn ValueBinding="{value: Description}"
-                                    HeaderText="Poznámka" />
+        <dot:GridViewTextColumn ValueBinding="{value: Description}"
+                                HeaderText="Poznámka"
+                                HeaderCssClass="table-light" />
 
-            <dot:GridViewTemplateColumn>
-                <dot:RouteLink RouteName="{resource: Routes.ScheduledEvents.ScheduledEventEdit}" Param-Id="{{value: Id}}">
-                    editovat
-                </dot:RouteLink>
-            </dot:GridViewTemplateColumn>
+        <dot:GridViewTemplateColumn HeaderCssClass="table-light">
+            <dot:RouteLink RouteName="{resource: Routes.ScheduledEvents.ScheduledEventEdit}" 
+                            Param-Id="{{value: Id}}"
+                            class="btn btn-primary btn-sm">
+                Editovat
+            </dot:RouteLink>
+        </dot:GridViewTemplateColumn>
 
-            <dot:GridViewTemplateColumn>
-                <dot:LinkButton Click="{command: _root.Clone(Id)}">
-                    klonovat
-                </dot:LinkButton>
-            </dot:GridViewTemplateColumn>
+        <dot:GridViewTemplateColumn HeaderCssClass="table-light">
+            <dot:LinkButton Click="{command: _root.Clone(Id)}"
+                            class="btn btn-primary btn-sm">
+                Klonovat
+            </dot:LinkButton>
+        </dot:GridViewTemplateColumn>
 
-            <dot:GridViewTemplateColumn>
-                <dot:LinkButton Click="{command: _root.Delete(Id)}">
-                    <PostBack.Handlers>
-                        <dot:ConfirmPostBackHandler Message="Opravdu chcete záznam smazat?" />
-                    </PostBack.Handlers>
-                    smazat
-                </dot:LinkButton>
-            </dot:GridViewTemplateColumn>
+        <dot:GridViewTemplateColumn HeaderCssClass="table-light">
+            <dot:LinkButton Click="{command: _root.Delete(Id)}"
+                            class="btn btn-primary btn-sm">
+                <PostBack.Handlers>
+                    <dot:ConfirmPostBackHandler Message="Opravdu chcete záznam smazat?" />
+                </PostBack.Handlers>
+                Smazat
+            </dot:LinkButton>
+        </dot:GridViewTemplateColumn>
 
-        </dot:GridView>
-    </div>
+    </dot:GridView>
+
 </dot:Content>
 

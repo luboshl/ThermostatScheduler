@@ -3,57 +3,59 @@
 @import ThermostatScheduler.WebApp
 
 <dot:Content ContentPlaceHolderID="MainContent">
-    <div class="page-center">
-        <dot:RouteLink RouteName="{resource: Routes.ScheduledEvents.ScheduledEventList}" Text="Zpět" class="page-button btn-back btn-long" />
-        <div class="page-box">
-            <h1>Vytvoření položky časového programu vytápění</h1>
+    <h1 class="mb-4">Vytvoření položky časového programu vytápění</h1>
 
-            <div Validator.Value="{value: Model.HeatingZoneId}"
-                 Validator.InvalidCssClass="has-error"
-                 Validator.SetToolTipText="true"
-                 class="page-input-box">
-                Zóna
-                <dot:ComboBox DataSource="{value: HeatingZones}"
-                              SelectedValue="{value: Model.HeatingZoneId}"
-                              ItemTextBinding="{value: Name}"
-                              ItemValueBinding="{value: Id}"
-                              Placeholder="Zvolte zónu"
-                              class="page-input"
-                              AutoFocus="true" />
-            </div>
-
-            <div Validator.Value="{value: Model.Time}"
-                 Validator.InvalidCssClass="has-error"
-                 Validator.SetToolTipText="true"
-                 class="page-input-box">
-                Čas
-                <dot:TextBox Text="{value: Model.Time}"
-                             class="page-input"
-                             FormatString="H:mm" />
-            </div>
-
-            <div Validator.Value="{value: Model.Temperature}"
-                 Validator.InvalidCssClass="has-error"
-                 Validator.SetToolTipText="true"
-                 class="page-input-box">
-                Teplota
-                <dot:TextBox Text="{value: Model.Temperature}" class="page-input" />
-            </div>
-
-            <div Validator.Value="{value: Model.Note}"
-                 Validator.InvalidCssClass="has-error"
-                 Validator.SetToolTipText="true"
-                 class="page-input-box">
-                Poznámka
-                <dot:TextBox Text="{value: Model.Note}" class="page-input" />
-            </div>
-
-            <div class="btn-container">
-                <dot:Button Text="Vytvořit"
-                            Click="{command: Create()}"
-                            class="page-button" />
-            </div>
+    <div class="row mb-3">
+        <label for="zone" class="col-sm-2 col-form-label">Zóna</label>
+        <div class="col-sm-4">
+            <dot:ComboBox id="zone"
+                          DataSource="{value: HeatingZones}"
+                          SelectedValue="{value: Model.HeatingZoneId}"
+                          ItemTextBinding="{value: Name}"
+                          ItemValueBinding="{value: Id}"
+                          placeholder="Zvolte zónu"
+                          class="form-select"
+                          AutoFocus="true" />
         </div>
     </div>
+            
+    <div class="row mb-3">
+        <label for="time" class="col-sm-2 col-form-label">Čas</label>
+        <div class="col-sm-4">
+            <dot:TextBox ID="time"
+                         Text="{value: Model.Time}"
+                         class="form-control"
+                         FormatString="H:mm" />
+        </div>
+    </div>
+            
+    <div class="row mb-3">
+        <label for="temperature" class="col-sm-2 col-form-label">Teplota</label>
+        <div class="col-sm-4">
+            <dot:TextBox ID="temperature"
+                         Text="{value: Model.Temperature}"
+                         class="form-control" />
+        </div>
+    </div>
+            
+
+    <div class="row mb-3">
+        <label for="note" class="col-sm-2 col-form-label">Poznámka</label>
+        <div class="col-sm-4">
+            <dot:TextBox ID="note"
+                         Text="{value: Model.Note}"
+                         class="form-control" placeholder=" " />
+        </div>
+    </div>
+
+
+    <dot:RouteLink RouteName="{resource: Routes.ScheduledEvents.ScheduledEventList}"
+                   Text="Zpět"
+                   class="btn btn-secondary" />
+
+    <dot:Button Text="Uložit"
+                Click="{command: Create()}"
+                class="btn btn-primary" />
+
 </dot:Content>
 
