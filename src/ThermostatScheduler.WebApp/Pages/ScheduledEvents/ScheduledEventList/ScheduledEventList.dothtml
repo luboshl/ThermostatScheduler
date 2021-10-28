@@ -25,6 +25,10 @@
 
             <EmptyDataTemplate>Žádná data k zobrazení.</EmptyDataTemplate>
 
+            <RowDecorators>
+                <dot:Decorator class="{value: IsActive ? 'active-scheule-row' : '' }" />
+            </RowDecorators>
+
             <dot:GridViewTextColumn ValueBinding="{value: Id}"
                                     HeaderText="ID" />
 
@@ -32,12 +36,12 @@
                                     HeaderText="Zóna" />
 
             <dot:GridViewTextColumn ValueBinding="{value: Time}"
-                                    CssClass="{value: IsActive ? 'active-scheule' : '' }"
+                                    CssClass="{value: IsActive ? 'active-scheule-row' : '' }"
                                     HeaderText="Čas"
                                     FormatString="HH:mm" />
 
             <dot:GridViewTextColumn ValueBinding="{value: Temperature}"
-                                    CssClass="{value: IsActive ? 'active-scheule' : '' }"
+                                    CssClass="{value: IsActive ? 'active-scheule-row' : '' }"
                                     HeaderText="Teplota (°C)"
                                     FormatString="N1" />
 
