@@ -38,7 +38,9 @@
 
     <dot:RouteLink RouteName="{resource: Routes.HeatingZones.HeatingZoneList}"
                    Text="Zpět"
-                   class="btn btn-secondary" />
+                   class="btn btn-secondary">
+        <i class="fa fa-arrow-left"></i>
+    </dot:RouteLink>
 
     <dot:Button Text="Uložit"
                 Click="{command: Save()}"
