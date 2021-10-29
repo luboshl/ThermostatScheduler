@@ -17,16 +17,13 @@ namespace ThermostatScheduler.WebApp.Models
         [Required]
         public double Temperature { get; set; }
 
-        public string Note { get; set; } = null!;
-
-        public ScheduledEventDetailModel(int id, int heatingZoneId, string heatingZoneName, DateTime time, double temperature, string note)
+        public ScheduledEventDetailModel(int id, int heatingZoneId, string heatingZoneName, DateTime time, double temperature)
         {
             Id = id;
             HeatingZoneId = heatingZoneId;
             HeatingZoneName = heatingZoneName;
             Time = time;
             Temperature = temperature;
-            Note = note;
         }
 
         public ScheduledEventDetailModel()

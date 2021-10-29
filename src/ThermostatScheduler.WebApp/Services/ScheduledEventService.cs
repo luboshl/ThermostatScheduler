@@ -50,7 +50,6 @@ namespace ThermostatScheduler.WebApp.Services
                         heatingZonesById[x.HeatingZoneId].Name,
                         GetDateTime(x.Time),
                         x.Temperature,
-                        x.Note,
                         currentSchedules.Contains(x)))
                 .ToList();
         }
@@ -65,13 +64,12 @@ namespace ThermostatScheduler.WebApp.Services
                 heatingZone.Id,
                 heatingZone.Name,
                 GetDateTime(scheduledEvent.Time),
-                scheduledEvent.Temperature,
-                scheduledEvent.Note);
+                scheduledEvent.Temperature);
         }
 
         public async Task CreateAsync(ScheduledEventDetailModel model)
         {
-            var entity = new ScheduledEvent(model.HeatingZoneId, model.Time.TimeOfDay, model.Temperature, model.Note);
+            var entity = new ScheduledEvent(model.HeatingZoneId, model.Time.TimeOfDay, model.Temperature);
 
             await ValidateHeatingZone(model.HeatingZoneId);
 
@@ -81,7 +79,7 @@ namespace ThermostatScheduler.WebApp.Services
 
         public async Task UpdateAsync(ScheduledEventDetailModel model)
         {
-            var entity = new ScheduledEvent(model.HeatingZoneId, model.Time.TimeOfDay, model.Temperature, model.Note);
+            var entity = new ScheduledEvent(model.HeatingZoneId, model.Time.TimeOfDay, model.Temperature);
             await scheduledEventRepository.UpdateAsync(model.Id, entity);
             RestartScheduler();
         }
@@ -95,7 +93,7 @@ namespace ThermostatScheduler.WebApp.Services
         public async Task<int> CloneAsync(int id)
         {
             var original = await scheduledEventRepository.GetByIdAsync(id);
-            var clone = new ScheduledEvent(original.HeatingZoneId, original.Time, original.Temperature, original.Note);
+            var clone = new ScheduledEvent(original.HeatingZoneId, original.Time, original.Temperature);
             return await scheduledEventRepository.CreateAsync(clone);
         }
 

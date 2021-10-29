@@ -9,16 +9,6 @@
                     RouteName="{resource: Routes.ScheduledEvents.ScheduledEventCreate}"
                     class="btn btn-primary mb-3" />
 
-    <%--<bp:FormItem LabelText="Filtr zóny">
-        <bp:DropDownList DataSource="{value: HeatingZones}"
-                            SelectedValue="{value: SelectedHeatingZoneId}"
-                            ItemTextBinding="{value: Name}"
-                            ItemValueBinding="{value: Id}"
-                            Placeholder="(Všechny zóny)"
-                            AllowUnselect
-                            Changed="{command: ReloadData()}" />
-    </bp:FormItem>--%>
-
     <dot:GridView DataSource="{value: ScheduledEventList}"
                     ShowTableWhenNoData="true"
                     class="table table-hover table-sm">
@@ -71,9 +61,6 @@
 
         </dot:GridViewTemplateColumn>
 
-        <dot:GridViewTextColumn ValueBinding="{value: Description}"
-                                HeaderText="Poznámka"
-                                HeaderCssClass="table-light" />
     </dot:GridView>
 
 </dot:Content>

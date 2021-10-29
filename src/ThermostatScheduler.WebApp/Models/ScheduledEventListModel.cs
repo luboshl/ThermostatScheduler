@@ -9,7 +9,6 @@ namespace ThermostatScheduler.WebApp.Models
         public string HeatingZoneName { get; set; } = null!;
         public DateTime Time { get; set; }
         public string? Temperature { get; set; }
-        public string? Description { get; set; }
         public bool IsActive { get; set; }
 
         public ScheduledEventListModel(int id,
@@ -17,7 +16,6 @@ namespace ThermostatScheduler.WebApp.Models
                                        string heatingZoneName,
                                        DateTime time,
                                        double? temperature,
-                                       string? description,
                                        bool isActive)
         {
             Id = id;
@@ -25,7 +23,6 @@ namespace ThermostatScheduler.WebApp.Models
             HeatingZoneName = heatingZoneName;
             Time = time;
             Temperature = temperature != null ? temperature?.ToString("N1") + "°C" : null;
-            Description = description;
             IsActive = isActive;
         }
 
