@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using ThermostatScheduler.Common;
 using ThermostatScheduler.Common.Infrastructure;
 using ThermostatScheduler.Persistence.Model;
 using ThermostatScheduler.Persistence.Repositories;
@@ -50,6 +51,9 @@ namespace ThermostatScheduler.WebApp.Services
                         heatingZonesById[x.HeatingZoneId].Name,
                         GetDateTime(x.Time),
                         x.Temperature,
+                        x.Mode,
+                        x.ValidFrom,
+                        x.ValidTo,
                         currentSchedules.Contains(x)))
                 .ToList();
         }
@@ -64,14 +68,16 @@ namespace ThermostatScheduler.WebApp.Services
                 heatingZone.Id,
                 heatingZone.Name,
                 GetDateTime(scheduledEvent.Time),
-                scheduledEvent.Temperature);
+                scheduledEvent.Temperature,
+                scheduledEvent.ValidFrom,
+                scheduledEvent.ValidTo,
+                scheduledEvent.Mode);
         }
 
         public async Task CreateAsync(ScheduledEventDetailModel model)
         {
-            var entity = new ScheduledEvent(model.HeatingZoneId, model.Time.TimeOfDay, model.Temperature);
-
-            await ValidateHeatingZone(model.HeatingZoneId);
+            var entity = MapScheduledEvent(model);
+            await ValidateHeatingZone(entity.HeatingZoneId);
 
             await scheduledEventRepository.CreateAsync(entity);
             RestartScheduler();
@@ -79,7 +85,9 @@ namespace ThermostatScheduler.WebApp.Services
 
         public async Task UpdateAsync(ScheduledEventDetailModel model)
         {
-            var entity = new ScheduledEvent(model.HeatingZoneId, model.Time.TimeOfDay, model.Temperature);
+            var entity = MapScheduledEvent(model);
+            await ValidateHeatingZone(entity.HeatingZoneId);
+
             await scheduledEventRepository.UpdateAsync(model.Id, entity);
             RestartScheduler();
         }
@@ -93,8 +101,24 @@ namespace ThermostatScheduler.WebApp.Services
         public async Task<int> CloneAsync(int id)
         {
             var original = await scheduledEventRepository.GetByIdAsync(id);
-            var clone = new ScheduledEvent(original.HeatingZoneId, original.Time, original.Temperature);
+            var clone = original.GetClone();
             return await scheduledEventRepository.CreateAsync(clone);
+        }
+
+        private static ScheduledEvent MapScheduledEvent(ScheduledEventDetailModel model)
+        {
+            var validTo = model.SelectedScheduleMode == ScheduleMode.OneTimeOnly
+                ? model.ValidFrom ?? throw new InvalidOperationException($"{nameof(model.ValidFrom)} not set for {nameof(ScheduleMode.OneTimeOnly)} mode.")
+                : model.ValidTo;
+            
+            var entity = new ScheduledEvent(
+                model.HeatingZoneId,
+                model.Time.TimeOfDay,
+                model.Temperature,
+                model.ValidFrom,
+                validTo,
+                model.SelectedScheduleMode);
+            return entity;
         }
 
         private DateTime GetDateTime(TimeSpan time)

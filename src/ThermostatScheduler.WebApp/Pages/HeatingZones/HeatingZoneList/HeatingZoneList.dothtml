@@ -10,7 +10,7 @@
                    class="btn btn-primary mb-3" />
 
     <dot:GridView DataSource="{value: HeatingZoneList}"
-                  ShowTableWhenNoData="true"
+                  ShowHeaderWhenNoData="true"
                   class="table table-hover table-sm">
 
         <EmptyDataTemplate>

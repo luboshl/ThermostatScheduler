@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Quartz;
 using Quartz.Impl;
+using ThermostatScheduler.Common;
+using ThermostatScheduler.Common.Infrastructure;
 using ThermostatScheduler.Persistence.Model;
 using ThermostatScheduler.Persistence.Repositories;
 
@@ -19,16 +21,19 @@ namespace ThermostatScheduler.Processing
         private readonly IRepository<ScheduledEvent> scheduledEventRepository;
         private readonly IRepository<HeatingZone> heatingZoneRepository;
         private readonly IServiceProvider serviceProvider;
+        private readonly IDateTimeProvider dateTimeProvider;
 
         public SchedulerManager(ILogger<SchedulerManager> logger,
                                 IRepository<ScheduledEvent> scheduledEventRepository,
                                 IRepository<HeatingZone> heatingZoneRepository,
-                                IServiceProvider serviceProvider)
+                                IServiceProvider serviceProvider,
+                                IDateTimeProvider dateTimeProvider)
         {
             this.logger = logger;
             this.scheduledEventRepository = scheduledEventRepository;
             this.heatingZoneRepository = heatingZoneRepository;
             this.serviceProvider = serviceProvider;
+            this.dateTimeProvider = dateTimeProvider;
         }
 
         public async Task StartAsync(CancellationToken ct)
@@ -78,6 +83,11 @@ namespace ThermostatScheduler.Processing
             var heatingZones = await heatingZoneRepository.GetAsync();
             var heatingZonesById = heatingZones.ToDictionary(x => x.Id);
 
+            scheduledEvents = scheduledEvents
+                .Where(x => x.ValidFrom == null || x.ValidFrom.Value <= dateTimeProvider.Now)
+                .Where(x => x.ValidTo == null || dateTimeProvider.Now <= x.ValidTo.Value)
+                .ToList();
+
             foreach (var scheduledEvent in scheduledEvents)
             {
                 await ConfigureQuartzJob(scheduler, scheduledEvent, heatingZonesById[scheduledEvent.HeatingZoneId], ct);
@@ -94,21 +104,69 @@ namespace ThermostatScheduler.Processing
                 .UsingJobData(SetTemperatureJob.Key.Temperature, scheduledEvent.Temperature)
                 .Build();
 
-            var dateTimeLocal = DateTime.Today.Add(scheduledEvent.Time);
-            var dateTimeUtc = dateTimeLocal.ToUniversalTime();
-            var hourInterval = 24;
+            var startDate = GetStartDateTime(scheduledEvent);
+            var startDateTimeLocal = startDate.Add(scheduledEvent.Time);
+            var startDateTimeUtc = startDateTimeLocal.ToUniversalTime();
 
-            var trigger = TriggerBuilder.Create()
-                .StartAt(new DateTimeOffset(dateTimeUtc))
-                .WithSimpleSchedule(x => x
-                    .WithIntervalInHours(hourInterval)
-                    .RepeatForever())
-                .Build();
+            var triggerBuilder = TriggerBuilder.Create();
+            triggerBuilder = triggerBuilder.StartAt(new DateTimeOffset(startDateTimeUtc));
 
-            logger.LogInformation("Event ID {id} scheduled at {time} (UTC {dateTimeUtc}) with interval in {interval} hours.",
-                scheduledEvent.Id, scheduledEvent.Time, dateTimeUtc, hourInterval);
-            
+            var logMessage = $"Event ID {scheduledEvent.Id} scheduled to {startDateTimeLocal} (UTC {startDateTimeUtc})";
+
+            switch (scheduledEvent.Mode)
+            {
+                case ScheduleMode.RepeatDaily:
+                {
+                    var oneDayInHours = 24;
+                    triggerBuilder = triggerBuilder
+                        .WithSimpleSchedule(builder => builder
+                            .WithMisfireHandlingInstructionNextWithExistingCount()
+                            .WithIntervalInHours(oneDayInHours)
+                            .RepeatForever());
+
+                    logMessage += $" with interval in {oneDayInHours} hours";
+                    break;
+                }
+                case ScheduleMode.OneTimeOnly:
+                    triggerBuilder = triggerBuilder
+                        .WithSimpleSchedule(builder => builder
+                            .WithMisfireHandlingInstructionNextWithExistingCount());
+                    logMessage += " as one time only event";
+                    break;
+                default:
+                    logger.LogError($"Event ID {scheduledEvent.Id} - unknown {nameof(ScheduleMode)}: {scheduledEvent.Mode}.");
+                    return;
+            }
+
+            if (scheduledEvent.ValidTo is not null)
+            {
+                var endDate = scheduledEvent.ValidTo.Value.Date;
+                var endDateTimeLocal = endDate.Add(scheduledEvent.Time);
+                var endDateTimeUtc = endDateTimeLocal.ToUniversalTime();
+                triggerBuilder.EndAt(new DateTimeOffset(endDateTimeUtc));
+
+                logMessage += $". Valid to {endDateTimeLocal} (UTC {endDateTimeUtc})";
+            }
+
+            var trigger = triggerBuilder.Build();
+
             await scheduler.ScheduleJob(job, trigger, ct);
+            logger.LogInformation(logMessage + ".");
+        }
+
+        private DateTime GetStartDateTime(ScheduledEvent scheduledEvent)
+        {
+            if (scheduledEvent.ValidFrom is null)
+            {
+                return dateTimeProvider.Now.Date;
+            }
+
+            if (scheduledEvent.ValidFrom.Value.Date < dateTimeProvider.Now.Date)
+            {
+                return dateTimeProvider.Now.Date;
+            }
+
+            return scheduledEvent.ValidFrom.Value.Date;
         }
     }
 }

@@ -1,17 +1,18 @@
 ﻿@viewModel ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventList.ScheduledEventListViewModel, ThermostatScheduler.WebApp
 @masterPage Pages/MasterPage.dotmaster
 @import ThermostatScheduler.WebApp
+@import ThermostatScheduler.Common
 
 <dot:Content ContentPlaceHolderID="MainContent">
     <h1 class="mb-4">Časový program vytápění</h1>
  
-    <dot:RouteLink Text="Vytvořit nový zánam"
+    <dot:RouteLink Text="Vytvořit nový záznam"
                     RouteName="{resource: Routes.ScheduledEvents.ScheduledEventCreate}"
                     class="btn btn-primary mb-3" />
 
     <dot:GridView DataSource="{value: ScheduledEventList}"
-                    ShowTableWhenNoData="true"
-                    class="table table-hover table-sm">
+                  ShowHeaderWhenNoData="true"
+                  class="table table-hover table-sm">
 
         <EmptyDataTemplate>Žádná data k zobrazení.</EmptyDataTemplate>
 
@@ -27,6 +28,15 @@
                                 HeaderText="Zóna"
                                 HeaderCssClass="table-light" />
 
+        <dot:GridViewTemplateColumn HeaderText="Čas"
+                                    CssClass="{value: IsActive ? 'table-primary' : '' }"
+                                    HeaderCssClass="table-light">
+            {{value: Time.ToString("HH:mm")}}
+           <i class="fa fa-clock text-primary"
+              IncludeInPage="{value: Mode == ScheduleMode.OneTimeOnly}"
+              title="Jednorázově"></i>
+        </dot:GridViewTemplateColumn>
+
         <dot:GridViewTextColumn ValueBinding="{value: Time}"
                                 CssClass="{value: IsActive ? 'table-primary' : '' }"
                                 HeaderText="Čas"
@@ -38,11 +48,16 @@
                                 HeaderText="Teplota"
                                 HeaderCssClass="table-light" />
 
+        <dot:GridViewTextColumn ValueBinding="{value: Validity}"
+                                CssClass="{value: IsActive ? 'table-primary' : '' }"
+                                HeaderText="Platnost"
+                                HeaderCssClass="table-light" />
+
         <dot:GridViewTemplateColumn HeaderText="Akce"
                                     HeaderCssClass="table-light">
             <dot:RouteLink RouteName="{resource: Routes.ScheduledEvents.ScheduledEventEdit}" 
-                            Param-Id="{{value: Id}}"
-                            class="btn btn-outline-primary btn-sm">
+                           Param-Id="{{value: Id}}"
+                           class="btn btn-outline-primary btn-sm">
                 <i class="fa fa-pen"></i>
             </dot:RouteLink>
 

@@ -18,6 +18,7 @@
     "ThermostatScheduler": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "scheduled-events/scheduled-event-list",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

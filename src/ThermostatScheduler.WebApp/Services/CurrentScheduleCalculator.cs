@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ThermostatScheduler.Common;
 using ThermostatScheduler.Common.Infrastructure;
 using ThermostatScheduler.Persistence.Model;
 
@@ -35,6 +36,8 @@ namespace ThermostatScheduler.WebApp.Services
         private ScheduledEvent? GetLatestPreviousEvent(IEnumerable<ScheduledEvent> eventsOfZone)
         {
             return eventsOfZone
+                .Where(x => x.ValidFrom == null || x.ValidFrom.Value < dateTimeProvider.Now)
+                .Where(x => x.ValidTo == null || dateTimeProvider.Now < x.ValidTo.Value)
                 .OrderBy(x => CalculatePastDateTime(x.Time))
                 .LastOrDefault();
         }

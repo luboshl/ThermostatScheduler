@@ -22,7 +22,7 @@
                          Text="{value: Model.Name}"
                          class="form-control"
                          FormatString="H:mm"
-                         AutoFocus="true" />
+                         autoFocus="true" />
         </div>
     </div>
             
