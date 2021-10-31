@@ -4,9 +4,9 @@
 @import ThermostatScheduler.Common
 
 <dot:Content ContentPlaceHolderID="MainContent">
-    <h1 class="mb-4">Úprava položky časového programu vytápění</h1>
+    <h1 class="mb-4">{{value: IsEditMode ? "Úprava" : "Vytvoření"}} položky časového programu vytápění</h1>
            
-    <div class="row mb-3">
+    <div class="row mb-3" IncludeInPage="{value: IsEditMode}">
         <label for="id" class="col-sm-2 col-form-label">ID</label>
         <div class="col-sm-2">
             <dot:TextBox ID="id"
@@ -25,7 +25,8 @@
                           ItemTextBinding="{value: Name}"
                           ItemValueBinding="{value: Id}"
                           placeholder="Zvolte zónu"
-                          class="form-select" />
+                          class="form-select"
+                          autoFocus="{value: !IsEditMode}" />
         </div>
     </div>
     
@@ -36,7 +37,7 @@
                          Text="{value: Model.Time}"
                          class="form-control"
                          FormatString="H:mm"
-                         autoFocus="true" />
+                         autoFocus="{value: IsEditMode}" />
         </div>
     </div>
             

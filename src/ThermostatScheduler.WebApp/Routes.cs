@@ -12,7 +12,7 @@ namespace ThermostatScheduler.WebApp
             public static string GroupPath => $"{GroupName}";
 
             public static string HeatingZoneList => GetRouteName(GroupPath);
-            public static string HeatingZoneCreate => GetRouteName(GroupPath);
+            public static string HeatingZoneCreate=> GetRouteName(GroupPath);
             public static string HeatingZoneEdit => GetRouteName(GroupPath);
         }
 

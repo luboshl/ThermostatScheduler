@@ -3,9 +3,9 @@
 @import ThermostatScheduler.WebApp
 
 <dot:Content ContentPlaceHolderID="MainContent">
-    <h1 class="mb-4">Úprava topné zóny</h1>
+    <h1 class="mb-4">{{value: IsEditMode ? "Úprava" : "Vytvoření" }} topné zóny</h1>
            
-    <div class="row mb-3">
+    <div class="row mb-3" IncludeInPage="{value: IsEditMode}">
         <label for="id" class="col-sm-2 col-form-label">ID</label>
         <div class="col-sm-2">
             <dot:TextBox ID="id"
@@ -35,7 +35,6 @@
         </div>
     </div>
 
-
     <dot:RouteLink RouteName="{resource: Routes.HeatingZones.HeatingZoneList}"
                    Text="Zpět"
                    class="btn btn-secondary">
@@ -45,6 +44,6 @@
     <dot:Button Text="Uložit"
                 Click="{command: Save()}"
                 class="btn btn-primary" />
-        
+      
 </dot:Content>
 

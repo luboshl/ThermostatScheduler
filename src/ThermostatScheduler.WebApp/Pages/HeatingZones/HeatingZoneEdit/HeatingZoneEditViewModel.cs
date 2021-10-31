@@ -12,7 +12,9 @@ namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneEdit
         [FromRoute("Id")]
         public int Id { get; set; }
 
-        public HeatingZoneDetailModel Model { get; set; } = new();
+        public bool IsEditMode => Id != 0;
+
+        public HeatingZoneDetailModel Model { get; set; } = null!;
 
         public HeatingZoneEditViewModel(IDependencies dependencies, IHeatingZoneService heatingZoneService)
             : base(dependencies)
@@ -22,13 +24,29 @@ namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneEdit
 
         public override async Task PreRender()
         {
-            Model = await heatingZoneService.GetByIdAsync(Id);
+            if (IsEditMode)
+            {
+                Model = await heatingZoneService.GetByIdAsync(Id);
+            }
+            else
+            {
+                Model = new HeatingZoneDetailModel();
+            }
+
             await base.PreRender();
         }
 
         public async Task Save()
         {
-            await heatingZoneService.UpdateAsync(Model);
+            if (IsEditMode)
+            {
+                await heatingZoneService.UpdateAsync(Model);
+            }
+            else
+            {
+                await heatingZoneService.CreateAsync(Model);
+            }
+
             Context.RedirectToRoute(Routes.HeatingZones.HeatingZoneList);
         }
     }

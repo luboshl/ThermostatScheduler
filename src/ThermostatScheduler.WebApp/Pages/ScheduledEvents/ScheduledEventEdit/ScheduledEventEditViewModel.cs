@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DotVVM.Framework.ViewModel;
+using ThermostatScheduler.Common;
 using ThermostatScheduler.WebApp.Models;
 using ThermostatScheduler.WebApp.Services;
 
@@ -13,6 +15,8 @@ namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventEdit
 
         [FromRoute("Id")]
         public int Id { get; set; }
+
+        public bool IsEditMode => Id != 0;
 
         public ScheduledEventDetailModel Model { get; set; } = null!;
         public ICollection<HeatingZoneListModel> HeatingZones { get; set; } = null!;
@@ -28,14 +32,35 @@ namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventEdit
 
         public override async Task PreRender()
         {
-            Model = await scheduledEventService.GetByIdAsync(Id);
+            if (IsEditMode)
+            {
+                Model = await scheduledEventService.GetByIdAsync(Id);
+            }
+            else
+            {
+                Model = new ScheduledEventDetailModel
+                {
+                    Time = DateTime.Today.AddHours(12),
+                    Temperature = 20,
+                    SelectedScheduleMode = ScheduleMode.RepeatDaily
+                };
+            }
+
             HeatingZones = await heatingZoneService.GetAllAsync();
             await base.PreRender();
         }
 
         public async Task Save()
         {
-            await scheduledEventService.UpdateAsync(Model);
+            if (IsEditMode)
+            {
+                await scheduledEventService.UpdateAsync(Model);
+            }
+            else
+            {
+                await scheduledEventService.CreateAsync(Model);
+            }
+
             Context.RedirectToRoute(Routes.ScheduledEvents.ScheduledEventList);
         }
     }

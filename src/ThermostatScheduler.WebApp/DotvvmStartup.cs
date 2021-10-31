@@ -1,6 +1,5 @@
 ﻿using DotVVM.Diagnostics.StatusPage;
 using DotVVM.Framework.Configuration;
-using DotVVM.Framework.ResourceManagement;
 using DotVVM.Framework.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,9 +18,9 @@ namespace ThermostatScheduler.WebApp
         private void ConfigureRoutes(DotvvmConfiguration config, string applicationPath)
         {
             config.RouteTable.Add(Routes.Default, "", "Pages/Default/Default.dothtml");
-            config.RouteTable.Add(Routes.HeatingZones.HeatingZoneCreate, "heating-zones/create", "Pages/HeatingZones/HeatingZoneCreate/HeatingZoneCreate.dothtml");
+            config.RouteTable.Add(Routes.HeatingZones.HeatingZoneCreate, "heating-zones/create", "Pages/HeatingZones/HeatingZoneEdit/HeatingZoneEdit.dothtml");
             config.RouteTable.Add(Routes.HeatingZones.HeatingZoneEdit, "heating-zones/edit/{Id}", "Pages/HeatingZones/HeatingZoneEdit/HeatingZoneEdit.dothtml");
-            config.RouteTable.Add(Routes.ScheduledEvents.ScheduledEventCreate, "scheduled-events/create", "Pages/ScheduledEvents/ScheduledEventCreate/ScheduledEventCreate.dothtml");
+            config.RouteTable.Add(Routes.ScheduledEvents.ScheduledEventCreate, "scheduled-events/create", "Pages/ScheduledEvents/ScheduledEventEdit/ScheduledEventEdit.dothtml");
             config.RouteTable.Add(Routes.ScheduledEvents.ScheduledEventEdit, "scheduled-events/edit/{Id}", "Pages/ScheduledEvents/ScheduledEventEdit/ScheduledEventEdit.dothtml");
             config.RouteTable.AutoDiscoverRoutes(new CustomRouteStrategy(config, "Pages"));
         }
