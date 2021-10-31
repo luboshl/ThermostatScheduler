@@ -11,7 +11,7 @@ namespace ThermostatScheduler.WebApp.Pages.Default
 
         public override Task PreRender()
         {
-            Context.RedirectToRoute(Routes.ScheduledEvents.ScheduledEventList);
+            Context.RedirectToRoute(Routes.Admin.ScheduledEvents.ScheduledEventList);
             return Task.CompletedTask;
         }
     }

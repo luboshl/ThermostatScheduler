@@ -1,5 +1,5 @@
-﻿@viewModel ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneDetail.HeatingZoneDetailViewModel, ThermostatScheduler.WebApp
-@masterPage Pages/MasterPage.dotmaster
+﻿@viewModel ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneDetail.HeatingZoneDetailViewModel, ThermostatScheduler.WebApp
+@masterPage Pages/Admin/AdminMasterPage.dotmaster
 @import ThermostatScheduler.WebApp
 
 <dot:Content ContentPlaceHolderID="MainContent">
@@ -54,7 +54,7 @@
 
     </form>
 
-    <dot:RouteLink RouteName="{resource: Routes.HeatingZones.HeatingZoneList}"
+    <dot:RouteLink RouteName="{resource: Routes.Admin.HeatingZones.HeatingZoneList}"
                    Text="Zpět"
                    class="btn btn-secondary">
         <i class="fa fa-arrow-left"></i>

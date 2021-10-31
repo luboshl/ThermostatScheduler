@@ -19,10 +19,10 @@ namespace ThermostatScheduler.WebApp
         private void ConfigureRoutes(DotvvmConfiguration config, string applicationPath)
         {
             config.RouteTable.Add(Routes.Default, "", "Pages/Default/Default.dothtml");
-            config.RouteTable.Add(Routes.HeatingZones.HeatingZoneCreate, "heating-zones/create", "Pages/HeatingZones/HeatingZoneDetail/HeatingZoneDetail.dothtml");
-            config.RouteTable.Add(Routes.HeatingZones.HeatingZoneEdit, "heating-zones/edit/{Id}", "Pages/HeatingZones/HeatingZoneDetail/HeatingZoneDetail.dothtml");
-            config.RouteTable.Add(Routes.ScheduledEvents.ScheduledEventCreate, "scheduled-events/create", "Pages/ScheduledEvents/ScheduledEventDetail/ScheduledEventDetail.dothtml");
-            config.RouteTable.Add(Routes.ScheduledEvents.ScheduledEventEdit, "scheduled-events/edit/{Id}", "Pages/ScheduledEvents/ScheduledEventDetail/ScheduledEventDetail.dothtml");
+            config.RouteTable.Add(Routes.Admin.HeatingZones.HeatingZoneCreate, "admin/heating-zones/create", "Pages/Admin/HeatingZones/HeatingZoneDetail/HeatingZoneDetail.dothtml");
+            config.RouteTable.Add(Routes.Admin.HeatingZones.HeatingZoneEdit, "admin/heating-zones/edit/{Id}", "Pages/Admin/HeatingZones/HeatingZoneDetail/HeatingZoneDetail.dothtml");
+            config.RouteTable.Add(Routes.Admin.ScheduledEvents.ScheduledEventCreate, "admin/scheduled-events/create", "Pages/Admin/ScheduledEvents/ScheduledEventDetail/ScheduledEventDetail.dothtml");
+            config.RouteTable.Add(Routes.Admin.ScheduledEvents.ScheduledEventEdit, "admin/scheduled-events/edit/{Id}", "Pages/Admin/ScheduledEvents/ScheduledEventDetail/ScheduledEventDetail.dothtml");
             config.RouteTable.AutoDiscoverRoutes(new CustomRouteStrategy(config, "Pages"));
         }
 

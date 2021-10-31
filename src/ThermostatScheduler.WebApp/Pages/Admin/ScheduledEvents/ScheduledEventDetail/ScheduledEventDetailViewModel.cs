@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DotVVM.Framework.ViewModel;
 using ThermostatScheduler.Common;
-using ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneList;
+using ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneList;
 using ThermostatScheduler.WebApp.Services;
 
-namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventDetail
+namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventDetail
 {
-    public class ScheduledEventDetailViewModel : MasterPageViewModel
+    public class ScheduledEventDetailViewModel : AdminMasterPageViewModel
     {
         private readonly IScheduledEventService scheduledEventService;
         private readonly IHeatingZoneService heatingZoneService;
@@ -61,7 +61,7 @@ namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventDetail
                 await scheduledEventService.CreateAsync(Model);
             }
 
-            Context.RedirectToRoute(Routes.ScheduledEvents.ScheduledEventList);
+            Context.RedirectToRoute(Routes.Admin.ScheduledEvents.ScheduledEventList);
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿@viewModel ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventDetail.ScheduledEventDetailViewModel, ThermostatScheduler.WebApp
-@masterPage Pages/MasterPage.dotmaster
+﻿@viewModel ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventDetail.ScheduledEventDetailViewModel, ThermostatScheduler.WebApp
+@masterPage Pages/Admin/AdminMasterPage.dotmaster
 @import ThermostatScheduler.WebApp
 @import ThermostatScheduler.Common
 
@@ -165,7 +165,7 @@
         </div>
     </form>
 
-    <dot:RouteLink RouteName="{resource: Routes.ScheduledEvents.ScheduledEventList}"
+    <dot:RouteLink RouteName="{resource: Routes.Admin.ScheduledEvents.ScheduledEventList}"
                    Text="Zpět"
                    class="btn btn-secondary">
         <i class="fa fa-arrow-left"></i>

@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DotVVM.Framework.Controls;
-using ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneList;
+using ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneList;
 using ThermostatScheduler.WebApp.Services;
 
-namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventList
+namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventList
 {
-    public class ScheduledEventListViewModel : MasterPageViewModel
+    public class ScheduledEventListViewModel : AdminMasterPageViewModel
     {
         private readonly IScheduledEventService scheduledEventService;
         private readonly IHeatingZoneService heatingZoneService;
@@ -58,7 +58,7 @@ namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventList
         public async Task Clone(int id)
         {
             var cloneId = await scheduledEventService.CloneAsync(id);
-            Context.RedirectToRoute(Routes.ScheduledEvents.ScheduledEventEdit, new { Id = cloneId });
+            Context.RedirectToRoute(Routes.Admin.ScheduledEvents.ScheduledEventEdit, new { Id = cloneId });
         }
 
         public void ReloadData()

@@ -1,0 +1,25 @@
+﻿@viewModel ThermostatScheduler.WebApp.Pages.Admin.AdminMasterPageViewModel, ThermostatScheduler.WebApp
+@masterPage Pages/MasterPage.dotmaster
+@import ThermostatScheduler.WebApp
+
+<dot:Content ContentPlaceHolderID="Body">
+    <div class="container bg-body">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light  mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Thermostat Scheduler</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <dot:RouteLink Text="Zóny vytápění" RouteName="{resource: Routes.Admin.HeatingZones.HeatingZoneList}" class="nav-link" />
+                        <dot:RouteLink Text="Časový program vytápění" RouteName="{resource: Routes.Admin.ScheduledEvents.ScheduledEventList}" class="nav-link" />
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <dot:ContentPlaceHolder ID="MainContent" />
+    <div>
+  </div>
+</dot:Content>

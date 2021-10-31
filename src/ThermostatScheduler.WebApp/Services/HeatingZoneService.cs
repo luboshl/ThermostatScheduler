@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using ThermostatScheduler.Persistence.Model;
 using ThermostatScheduler.Persistence.Repositories;
 using ThermostatScheduler.WebApp.Exceptions;
-using ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneDetail;
-using ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneList;
+using ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneDetail;
+using ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneList;
 
 namespace ThermostatScheduler.WebApp.Services
 {

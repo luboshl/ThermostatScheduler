@@ -1,4 +1,4 @@
-﻿namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneList
+﻿namespace ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneList
 {
     public class HeatingZoneListModel
     {

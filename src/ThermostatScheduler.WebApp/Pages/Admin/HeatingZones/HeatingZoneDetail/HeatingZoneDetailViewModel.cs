@@ -2,9 +2,9 @@
 using DotVVM.Framework.ViewModel;
 using ThermostatScheduler.WebApp.Services;
 
-namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneDetail
+namespace ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneDetail
 {
-    public class HeatingZoneDetailViewModel : MasterPageViewModel
+    public class HeatingZoneDetailViewModel : AdminMasterPageViewModel
     {
         private readonly IHeatingZoneService heatingZoneService;
 
@@ -46,7 +46,7 @@ namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneDetail
                 await heatingZoneService.CreateAsync(Model);
             }
 
-            Context.RedirectToRoute(Routes.HeatingZones.HeatingZoneList);
+            Context.RedirectToRoute(Routes.Admin.HeatingZones.HeatingZoneList);
         }
     }
 }

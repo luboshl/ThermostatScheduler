@@ -5,9 +5,9 @@ using DotVVM.Framework.ViewModel.Validation;
 using ThermostatScheduler.WebApp.Exceptions;
 using ThermostatScheduler.WebApp.Services;
 
-namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneList
+namespace ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneList
 {
-    public class HeatingZoneListViewModel : MasterPageViewModel
+    public class HeatingZoneListViewModel : AdminMasterPageViewModel
     {
         private readonly IHeatingZoneService heatingZoneService;
 

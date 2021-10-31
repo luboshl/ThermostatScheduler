@@ -1,5 +1,4 @@
 ﻿@viewModel ThermostatScheduler.WebApp.Pages.Default.DefaultViewModel, ThermostatScheduler.WebApp
 @masterPage Pages/MasterPage.dotmaster
-<dot:Content ContentPlaceHolderID="MainContent">
-
+<dot:Content ContentPlaceHolderID="Body">
 </dot:Content>

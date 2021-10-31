@@ -1,12 +1,12 @@
-﻿@viewModel ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneList.HeatingZoneListViewModel, ThermostatScheduler.WebApp
-@masterPage Pages/MasterPage.dotmaster
+﻿@viewModel ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneList.HeatingZoneListViewModel, ThermostatScheduler.WebApp
+@masterPage Pages/Admin/AdminMasterPage.dotmaster
 @import ThermostatScheduler.WebApp
 
 <dot:Content ContentPlaceHolderID="MainContent">
     <h1 class="mb-4">Zóny vytápění</h1>
             
     <dot:RouteLink Text="Vytvořit novou zónu"
-                   RouteName="{resource: Routes.HeatingZones.HeatingZoneCreate}"
+                   RouteName="{resource: Routes.Admin.HeatingZones.HeatingZoneCreate}"
                    class="btn btn-primary mb-3" />
 
     <dot:GridView DataSource="{value: HeatingZoneList}"
@@ -33,7 +33,7 @@
 
             <dot:GridViewTemplateColumn HeaderText="Akce" 
                                         HeaderCssClass="table-light">
-                <dot:RouteLink RouteName="{resource: Routes.HeatingZones.HeatingZoneEdit}" 
+                <dot:RouteLink RouteName="{resource: Routes.Admin.HeatingZones.HeatingZoneEdit}" 
                                Param-Id="{{value: Id}}"
                                class="btn btn-outline-primary btn-sm">
                 <i class="fa fa-pen"></i>
