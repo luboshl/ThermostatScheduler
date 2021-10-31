@@ -9,8 +9,8 @@ using ThermostatScheduler.Common.Infrastructure;
 using ThermostatScheduler.Persistence.Model;
 using ThermostatScheduler.Persistence.Repositories;
 using ThermostatScheduler.Processing;
-using ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventDetail;
-using ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventList;
+using ThermostatScheduler.WebApp.Pages.Admin.Events.EventDetail;
+using ThermostatScheduler.WebApp.Pages.Admin.Events.EventList;
 
 namespace ThermostatScheduler.WebApp.Services
 {
@@ -38,7 +38,7 @@ namespace ThermostatScheduler.WebApp.Services
             this.currentScheduleCalculator = currentScheduleCalculator;
         }
 
-        public async Task<ICollection<ScheduledEventListModel>> GetAllAsync()
+        public async Task<ICollection<EventListModel>> GetAllAsync()
         {
             var heatingZones = await heatingZoneRepository.GetAsync();
             var heatingZonesById = heatingZones.ToDictionary(x => x.Id);
@@ -46,7 +46,7 @@ namespace ThermostatScheduler.WebApp.Services
             var currentSchedules = currentScheduleCalculator.GetCurrentSchedules(scheduledEvent);
 
             return scheduledEvent.Select(x =>
-                    new ScheduledEventListModel(
+                    new EventListModel(
                         x.Id,
                         x.HeatingZoneId,
                         heatingZonesById[x.HeatingZoneId].Name,
@@ -59,12 +59,12 @@ namespace ThermostatScheduler.WebApp.Services
                 .ToList();
         }
 
-        public async Task<ScheduledEventDetailModel> GetByIdAsync(int id)
+        public async Task<EventDetailModel> GetByIdAsync(int id)
         {
             var scheduledEvent = await scheduledEventRepository.GetByIdAsync(id);
             var heatingZone = await heatingZoneRepository.GetByIdAsync(scheduledEvent.HeatingZoneId);
 
-            return new ScheduledEventDetailModel(
+            return new EventDetailModel(
                 scheduledEvent.Id,
                 heatingZone.Id,
                 heatingZone.Name,
@@ -75,7 +75,7 @@ namespace ThermostatScheduler.WebApp.Services
                 scheduledEvent.Mode);
         }
 
-        public async Task CreateAsync(ScheduledEventDetailModel model)
+        public async Task CreateAsync(EventDetailModel model)
         {
             var entity = MapScheduledEvent(model);
             await ValidateHeatingZone(entity.HeatingZoneId);
@@ -84,7 +84,7 @@ namespace ThermostatScheduler.WebApp.Services
             RestartScheduler();
         }
 
-        public async Task UpdateAsync(ScheduledEventDetailModel model)
+        public async Task UpdateAsync(EventDetailModel model)
         {
             var entity = MapScheduledEvent(model);
             await ValidateHeatingZone(entity.HeatingZoneId);
@@ -106,7 +106,7 @@ namespace ThermostatScheduler.WebApp.Services
             return await scheduledEventRepository.CreateAsync(clone);
         }
 
-        private static ScheduledEvent MapScheduledEvent(ScheduledEventDetailModel model)
+        private static ScheduledEvent MapScheduledEvent(EventDetailModel model)
         {
             var validTo = model.SelectedScheduleMode == ScheduleMode.OneTimeOnly
                 ? model.ValidFrom ?? throw new InvalidOperationException($"{nameof(model.ValidFrom)} not set for {nameof(ScheduleMode.OneTimeOnly)} mode.")

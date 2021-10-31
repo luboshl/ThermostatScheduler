@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneDetail
+namespace ThermostatScheduler.WebApp.Pages.Admin.Zones.ZoneDetail
 {
-    public class HeatingZoneDetailModel
+    public class ZoneDetailModel
     {
         public int Id { get; set; }
 
@@ -12,14 +12,14 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneDetail
         [Required]
         public string Code { get; set; } = null!;
 
-        public HeatingZoneDetailModel(int id, string name, string code)
+        public ZoneDetailModel(int id, string name, string code)
         {
             Id = id;
             Name = name;
             Code = code;
         }
 
-        public HeatingZoneDetailModel()
+        public ZoneDetailModel()
         {
         }
     }

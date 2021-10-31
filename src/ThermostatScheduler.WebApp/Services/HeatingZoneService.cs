@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using ThermostatScheduler.Persistence.Model;
 using ThermostatScheduler.Persistence.Repositories;
 using ThermostatScheduler.WebApp.Exceptions;
-using ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneDetail;
-using ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneList;
+using ThermostatScheduler.WebApp.Pages.Admin.Zones.ZoneDetail;
+using ThermostatScheduler.WebApp.Pages.Admin.Zones.ZoneList;
 
 namespace ThermostatScheduler.WebApp.Services
 {
@@ -21,23 +21,23 @@ namespace ThermostatScheduler.WebApp.Services
             this.scheduledEventRepository = scheduledEventRepository;
         }
 
-        public async Task<ICollection<HeatingZoneListModel>> GetAllAsync()
+        public async Task<ICollection<ZoneListListModel>> GetAllAsync()
         {
             var entities = await heatingZoneRepository.GetAsync();
-            return entities.Select(x => new HeatingZoneListModel(x.Id, x.Name, x.Code)).ToList();
+            return entities.Select(x => new ZoneListListModel(x.Id, x.Name, x.Code)).ToList();
         }
 
-        public async Task<HeatingZoneDetailModel> GetByIdAsync(int id)
+        public async Task<ZoneDetailModel> GetByIdAsync(int id)
         {
             var entity = await heatingZoneRepository.GetByIdAsync(id);
-            return new HeatingZoneDetailModel(entity.Id, entity.Name, entity.Code);
+            return new ZoneDetailModel(entity.Id, entity.Name, entity.Code);
         }
 
-        public async Task<HeatingZoneDetailModel> GetNameByCodeAsync(string code)
+        public async Task<ZoneDetailModel> GetNameByCodeAsync(string code)
         {
             var entities = await heatingZoneRepository.GetAsync(x => x.Code == code);
             var entity = entities.Single();
-            return new HeatingZoneDetailModel(entity.Id, entity.Name, entity.Code);
+            return new ZoneDetailModel(entity.Id, entity.Name, entity.Code);
         }
 
         public async Task CreateAsync(string name, string code)

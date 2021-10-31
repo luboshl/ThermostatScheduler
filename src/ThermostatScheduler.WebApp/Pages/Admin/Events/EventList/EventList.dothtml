@@ -1,4 +1,4 @@
-﻿@viewModel ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventList.ScheduledEventListViewModel, ThermostatScheduler.WebApp
+﻿@viewModel ThermostatScheduler.WebApp.Pages.Admin.Events.EventList.EventListViewModel, ThermostatScheduler.WebApp
 @masterPage Pages/Admin/AdminMasterPage.dotmaster
 @import ThermostatScheduler.WebApp
 @import ThermostatScheduler.Common
@@ -7,7 +7,7 @@
     <h1 class="mb-4">Časový program vytápění</h1>
  
     <dot:RouteLink Text="Vytvořit nový záznam"
-                    RouteName="{resource: Routes.Admin.ScheduledEvents.ScheduledEventCreate}"
+                    RouteName="{resource: Routes.Admin.Events.EventCreate}"
                     class="btn btn-primary mb-3" />
 
     <dot:GridView DataSource="{value: ScheduledEventList}"
@@ -49,7 +49,7 @@
 
         <dot:GridViewTemplateColumn HeaderText="Akce"
                                     HeaderCssClass="table-light">
-            <dot:RouteLink RouteName="{resource: Routes.Admin.ScheduledEvents.ScheduledEventEdit}" 
+            <dot:RouteLink RouteName="{resource: Routes.Admin.Events.EventEdit}" 
                            Param-Id="{{value: Id}}"
                            class="btn btn-outline-primary btn-sm">
                 <i class="fa fa-pen"></i>

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DotVVM.Framework.ViewModel;
 using ThermostatScheduler.Common;
-using ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneList;
+using ThermostatScheduler.WebApp.Pages.Admin.Zones.ZoneList;
 using ThermostatScheduler.WebApp.Services;
 
-namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventDetail
+namespace ThermostatScheduler.WebApp.Pages.Admin.Events.EventDetail
 {
-    public class ScheduledEventDetailViewModel : AdminMasterPageViewModel
+    public class EventDetailViewModel : AdminMasterPageViewModel
     {
         private readonly IScheduledEventService scheduledEventService;
         private readonly IHeatingZoneService heatingZoneService;
@@ -18,10 +18,10 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventD
 
         public bool IsEditMode => Id != 0;
 
-        public ScheduledEventDetailModel Model { get; set; } = null!;
-        public ICollection<HeatingZoneListModel> HeatingZones { get; set; } = null!;
+        public EventDetailModel Model { get; set; } = null!;
+        public ICollection<ZoneListListModel> HeatingZones { get; set; } = null!;
 
-        public ScheduledEventDetailViewModel(IDependencies dependencies,
+        public EventDetailViewModel(IDependencies dependencies,
                                            IScheduledEventService scheduledEventService,
                                            IHeatingZoneService heatingZoneService)
             : base(dependencies)
@@ -38,7 +38,7 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventD
             }
             else
             {
-                Model = new ScheduledEventDetailModel
+                Model = new EventDetailModel
                 {
                     Time = DateTime.Today.AddHours(12),
                     Temperature = 20,
@@ -61,7 +61,7 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventD
                 await scheduledEventService.CreateAsync(Model);
             }
 
-            Context.RedirectToRoute(Routes.Admin.ScheduledEvents.ScheduledEventList);
+            Context.RedirectToRoute(Routes.Admin.Events.EventList);
         }
     }
 }

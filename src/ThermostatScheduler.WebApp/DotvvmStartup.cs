@@ -21,10 +21,10 @@ namespace ThermostatScheduler.WebApp
             config.RouteTable.Add(Routes.Default, "", "Pages/Default/Default.dothtml");
             
             // Admin
-            config.RouteTable.Add(Routes.Admin.HeatingZones.HeatingZoneCreate, "admin/heating-zones/create", "Pages/Admin/HeatingZones/HeatingZoneDetail/HeatingZoneDetail.dothtml");
-            config.RouteTable.Add(Routes.Admin.HeatingZones.HeatingZoneEdit, "admin/heating-zones/edit/{Id}", "Pages/Admin/HeatingZones/HeatingZoneDetail/HeatingZoneDetail.dothtml");
-            config.RouteTable.Add(Routes.Admin.ScheduledEvents.ScheduledEventCreate, "admin/scheduled-events/create", "Pages/Admin/ScheduledEvents/ScheduledEventDetail/ScheduledEventDetail.dothtml");
-            config.RouteTable.Add(Routes.Admin.ScheduledEvents.ScheduledEventEdit, "admin/scheduled-events/edit/{Id}", "Pages/Admin/ScheduledEvents/ScheduledEventDetail/ScheduledEventDetail.dothtml");
+            config.RouteTable.Add(Routes.Admin.Zones.ZoneCreate, "admin/zones/create", "Pages/Admin/Zones/ZoneDetail/ZoneDetail.dothtml");
+            config.RouteTable.Add(Routes.Admin.Zones.ZoneEdit, "admin/zones/edit/{Id}", "Pages/Admin/Zones/ZoneDetail/ZoneDetail.dothtml");
+            config.RouteTable.Add(Routes.Admin.Events.EventCreate, "admin/events/create", "Pages/Admin/Events/EventDetail/EventDetail.dothtml");
+            config.RouteTable.Add(Routes.Admin.Events.EventEdit, "admin/events/edit/{Id}", "Pages/Admin/Events/EventDetail/EventDetail.dothtml");
             
             // HomeAssistant
             config.RouteTable.Add(Routes.HomeAssistant.Zones.TemporaryTemperature, "ha/zones/temporary-temperature/{Code}", "Pages/HomeAssistant/Zones/TemporaryTemperature/TemporaryTemperature.dothtml");

@@ -1,9 +1,9 @@
 ﻿using System;
 using ThermostatScheduler.Common;
 
-namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventList
+namespace ThermostatScheduler.WebApp.Pages.Admin.Events.EventList
 {
-    public class ScheduledEventListModel
+    public class EventListModel
     {
         public int Id { get; set; }
         public int HeatingZoneId { get; set; }
@@ -17,7 +17,7 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventL
 
         public bool IsActive { get; set; }
 
-        public ScheduledEventListModel(int id,
+        public EventListModel(int id,
                                        int heatingZoneId,
                                        string heatingZoneName,
                                        DateTime time,
@@ -38,7 +38,7 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventL
             IsActive = isActive;
         }
 
-        public ScheduledEventListModel()
+        public EventListModel()
         {
         }
 

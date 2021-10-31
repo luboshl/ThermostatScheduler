@@ -2,9 +2,9 @@
 using DotVVM.Framework.ViewModel;
 using ThermostatScheduler.WebApp.Services;
 
-namespace ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneDetail
+namespace ThermostatScheduler.WebApp.Pages.Admin.Zones.ZoneDetail
 {
-    public class HeatingZoneDetailViewModel : AdminMasterPageViewModel
+    public class ZoneDetailViewModel : AdminMasterPageViewModel
     {
         private readonly IHeatingZoneService heatingZoneService;
 
@@ -13,9 +13,9 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneDetail
 
         public bool IsEditMode => Id != 0;
 
-        public HeatingZoneDetailModel Model { get; set; } = null!;
+        public ZoneDetailModel Model { get; set; } = null!;
 
-        public HeatingZoneDetailViewModel(IDependencies dependencies, IHeatingZoneService heatingZoneService)
+        public ZoneDetailViewModel(IDependencies dependencies, IHeatingZoneService heatingZoneService)
             : base(dependencies)
         {
             this.heatingZoneService = heatingZoneService;
@@ -29,7 +29,7 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneDetail
             }
             else
             {
-                Model = new HeatingZoneDetailModel();
+                Model = new ZoneDetailModel();
             }
 
             await base.PreRender();
@@ -46,7 +46,7 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneDetail
                 await heatingZoneService.CreateAsync(Model.Name, Model.Code);
             }
 
-            Context.RedirectToRoute(Routes.Admin.HeatingZones.HeatingZoneList);
+            Context.RedirectToRoute(Routes.Admin.Zones.ZoneList);
         }
     }
 }

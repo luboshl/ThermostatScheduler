@@ -5,15 +5,15 @@ using DotVVM.Framework.ViewModel.Validation;
 using ThermostatScheduler.WebApp.Exceptions;
 using ThermostatScheduler.WebApp.Services;
 
-namespace ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneList
+namespace ThermostatScheduler.WebApp.Pages.Admin.Zones.ZoneList
 {
-    public class HeatingZoneListViewModel : AdminMasterPageViewModel
+    public class ZoneListViewModel : AdminMasterPageViewModel
     {
         private readonly IHeatingZoneService heatingZoneService;
 
-        public GridViewDataSet<HeatingZoneListModel> HeatingZoneList { get; set; } = new();
+        public GridViewDataSet<ZoneListListModel> HeatingZoneList { get; set; } = new();
 
-        public HeatingZoneListViewModel(IDependencies dependencies,
+        public ZoneListViewModel(IDependencies dependencies,
                                         IHeatingZoneService heatingZoneService)
             : base(dependencies)
         {

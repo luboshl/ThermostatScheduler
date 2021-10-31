@@ -1,19 +1,19 @@
-﻿namespace ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneList
+﻿namespace ThermostatScheduler.WebApp.Pages.Admin.Zones.ZoneList
 {
-    public class HeatingZoneListModel
+    public class ZoneListListModel
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
         public string Code { get; set; } = null!;
 
-        public HeatingZoneListModel(int id, string name, string code)
+        public ZoneListListModel(int id, string name, string code)
         {
             Id = id;
             Name = name;
             Code = code;
         }
 
-        public HeatingZoneListModel()
+        public ZoneListListModel()
         {
         }
     }

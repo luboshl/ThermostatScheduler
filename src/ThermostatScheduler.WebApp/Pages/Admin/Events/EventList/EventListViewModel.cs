@@ -2,21 +2,21 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DotVVM.Framework.Controls;
-using ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneList;
+using ThermostatScheduler.WebApp.Pages.Admin.Zones.ZoneList;
 using ThermostatScheduler.WebApp.Services;
 
-namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventList
+namespace ThermostatScheduler.WebApp.Pages.Admin.Events.EventList
 {
-    public class ScheduledEventListViewModel : AdminMasterPageViewModel
+    public class EventListViewModel : AdminMasterPageViewModel
     {
         private readonly IScheduledEventService scheduledEventService;
         private readonly IHeatingZoneService heatingZoneService;
 
-        public GridViewDataSet<ScheduledEventListModel> ScheduledEventList { get; set; } = new();
-        public ICollection<HeatingZoneListModel> HeatingZones { get; set; } = null!;
+        public GridViewDataSet<EventListModel> ScheduledEventList { get; set; } = new();
+        public ICollection<ZoneListListModel> HeatingZones { get; set; } = null!;
         public int? SelectedHeatingZoneId { get; set; }
 
-        public ScheduledEventListViewModel(IDependencies dependencies,
+        public EventListViewModel(IDependencies dependencies,
                                            IScheduledEventService scheduledEventService,
                                            IHeatingZoneService heatingZoneService)
             : base(dependencies)
@@ -58,7 +58,7 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventL
         public async Task Clone(int id)
         {
             var cloneId = await scheduledEventService.CloneAsync(id);
-            Context.RedirectToRoute(Routes.Admin.ScheduledEvents.ScheduledEventEdit, new { Id = cloneId });
+            Context.RedirectToRoute(Routes.Admin.Events.EventEdit, new { Id = cloneId });
         }
 
         public void ReloadData()

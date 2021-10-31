@@ -13,24 +13,24 @@ namespace ThermostatScheduler.WebApp
             public static string GroupName => nameof(Admin);
             public static string GroupPath => $"{GroupName}";
 
-            public static class HeatingZones
+            public static class Zones
             {
-                public static string GroupName => nameof(HeatingZones);
+                public static string GroupName => nameof(Zones);
                 public static string GroupPath => $"{Admin.GroupPath}_{GroupName}";
 
-                public static string HeatingZoneList => GetRouteName(GroupPath);
-                public static string HeatingZoneCreate => GetRouteName(GroupPath);
-                public static string HeatingZoneEdit => GetRouteName(GroupPath);
+                public static string ZoneList => GetRouteName(GroupPath);
+                public static string ZoneCreate => GetRouteName(GroupPath);
+                public static string ZoneEdit => GetRouteName(GroupPath);
             }
 
-            public static class ScheduledEvents
+            public static class Events
             {
-                public static string GroupName => nameof(ScheduledEvents);
+                public static string GroupName => nameof(Events);
                 public static string GroupPath => $"{Admin.GroupPath}_{GroupName}";
 
-                public static string ScheduledEventList => GetRouteName(GroupPath);
-                public static string ScheduledEventCreate => GetRouteName(GroupPath);
-                public static string ScheduledEventEdit => GetRouteName(GroupPath);
+                public static string EventList => GetRouteName(GroupPath);
+                public static string EventCreate => GetRouteName(GroupPath);
+                public static string EventEdit => GetRouteName(GroupPath);
             }
         }
 

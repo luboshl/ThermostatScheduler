@@ -5,9 +5,9 @@ using System.Linq;
 using DotVVM.Framework.ViewModel;
 using ThermostatScheduler.Common;
 
-namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventDetail
+namespace ThermostatScheduler.WebApp.Pages.Admin.Events.EventDetail
 {
-    public class ScheduledEventDetailModel : IValidatableObject
+    public class EventDetailModel : IValidatableObject
     {
         public int Id { get; set; }
 
@@ -33,7 +33,7 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventD
 
         public bool IsValiditySet => ValidFrom != null || ValidTo != null;
 
-        public ScheduledEventDetailModel(int id,
+        public EventDetailModel(int id,
                                          int heatingZoneId,
                                          string heatingZoneName,
                                          DateTime time,
@@ -52,7 +52,7 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventD
             SelectedScheduleMode = mode;
         }
 
-        public ScheduledEventDetailModel()
+        public EventDetailModel()
         {
         }
 

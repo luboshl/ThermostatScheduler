@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventDetail;
-using ThermostatScheduler.WebApp.Pages.Admin.ScheduledEvents.ScheduledEventList;
+using ThermostatScheduler.WebApp.Pages.Admin.Events.EventDetail;
+using ThermostatScheduler.WebApp.Pages.Admin.Events.EventList;
 
 namespace ThermostatScheduler.WebApp.Services
 {
     public interface IScheduledEventService
     {
-        Task<ICollection<ScheduledEventListModel>> GetAllAsync();
-        Task<ScheduledEventDetailModel> GetByIdAsync(int id);
-        Task CreateAsync(ScheduledEventDetailModel model);
-        Task UpdateAsync(ScheduledEventDetailModel model);
+        Task<ICollection<EventListModel>> GetAllAsync();
+        Task<EventDetailModel> GetByIdAsync(int id);
+        Task CreateAsync(EventDetailModel model);
+        Task UpdateAsync(EventDetailModel model);
         Task DeleteAsync(int id);
         Task<int> CloneAsync(int id);
     }
