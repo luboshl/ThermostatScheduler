@@ -35,7 +35,7 @@
                               ItemValueBinding="{value: Id}"
                               placeholder="Zvolte zónu"
                               class="form-select"
-                              autoFocus="{value: !IsEditMode}"
+                              autofocus="{value: !IsEditMode}"
                               Validator.Value="{value: Model.HeatingZoneId}" />
                 <dot:Validator Value="{value: Model.HeatingZoneId}"
                                ShowErrorMessageText="true"
@@ -53,7 +53,7 @@
                              Text="{value: Model.Time}"
                              class="form-control"
                              FormatString="H:mm"
-                             autoFocus="{value: IsEditMode}"
+                             autofocus="{value: IsEditMode}"
                              Validator.Value="{value: Model.Time}" />
                 <dot:Validator Value="{value: Model.Time}"
                                ShowErrorMessageText="true"
