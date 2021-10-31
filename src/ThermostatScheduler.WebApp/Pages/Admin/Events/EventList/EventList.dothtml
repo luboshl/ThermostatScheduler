@@ -6,11 +6,30 @@
 <dot:Content ContentPlaceHolderID="MainContent">
     <h1 class="mb-4">Časový program vytápění</h1>
  
-    <dot:RouteLink Text="Vytvořit nový záznam"
-                    RouteName="{resource: Routes.Admin.Events.EventCreate}"
-                    class="btn btn-primary mb-3" />
+    <div class="row mb-3">
+        <div class="col-auto">
+            <dot:RouteLink Text="Vytvořit nový záznam"
+                           RouteName="{resource: Routes.Admin.Events.EventCreate}"
+                           class="btn btn-primary mb-3" />
+        </div>
+        <div class="col-auto">
+            <label class="col-form-label">Filtr zóny</label>
+        </div>
+        <div class="col-auto">
+            <div>
+                <dot:ComboBox DataSource="{value: Zones}"
+                              SelectedValue="{value: SelectedZoneId}"
+                              ItemTextBinding="{value: Name}"
+                              ItemValueBinding="{value: Id}"
+                              placeholder="Zvolte zónu"
+                              class="form-select"
+                              autofocus="true"
+                              SelectionChanged="{command: ChangeFilter(SelectedZoneId)}"/>
+            </div>
+        </div>
+    </div>
 
-    <dot:GridView DataSource="{value: ScheduledEventList}"
+    <dot:GridView DataSource="{value: EventList}"
                   ShowHeaderWhenNoData="true"
                   class="table table-hover table-sm">
 

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DotVVM.Framework.Controls;
+using DotVVM.Framework.ViewModel;
 using ThermostatScheduler.WebApp.Pages.Admin.Zones.ZoneList;
 using ThermostatScheduler.WebApp.Services;
 
@@ -9,16 +10,23 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.Events.EventList
 {
     public class EventListViewModel : AdminMasterPageViewModel
     {
+        private const int AllZonesId = 0;
         private readonly IScheduledEventService scheduledEventService;
         private readonly IHeatingZoneService heatingZoneService;
 
-        public GridViewDataSet<EventListModel> ScheduledEventList { get; set; } = new();
-        public ICollection<ZoneListListModel> HeatingZones { get; set; } = null!;
-        public int? SelectedHeatingZoneId { get; set; }
+        [FromRoute("ZoneId")]
+        public int? ZoneId { get; set; }
+
+        public GridViewDataSet<EventListModel> EventList { get; set; } = new();
+
+        [Bind(Direction.ServerToClientFirstRequest)]
+        public List<ZoneListListModel> Zones { get; set; } = null!;
+
+        public int SelectedZoneId { get; set; }
 
         public EventListViewModel(IDependencies dependencies,
-                                           IScheduledEventService scheduledEventService,
-                                           IHeatingZoneService heatingZoneService)
+                                  IScheduledEventService scheduledEventService,
+                                  IHeatingZoneService heatingZoneService)
             : base(dependencies)
         {
             this.scheduledEventService = scheduledEventService;
@@ -27,32 +35,42 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.Events.EventList
 
         public override async Task PreRender()
         {
-            if (ScheduledEventList.IsRefreshRequired)
+            if (!Context.IsPostBack)
+            {
+                SelectedZoneId = ZoneId ?? AllZonesId;
+            }
+
+            if (EventList.IsRefreshRequired)
             {
                 var scheduledEvents = await scheduledEventService.GetAllAsync();
 
-                if (SelectedHeatingZoneId != null)
+                if (SelectedZoneId != AllZonesId)
                 {
                     scheduledEvents = scheduledEvents
-                        .Where(x => x.HeatingZoneId == SelectedHeatingZoneId)
+                        .Where(x => x.HeatingZoneId == SelectedZoneId)
                         .ToList();
                 }
 
-                ScheduledEventList.LoadFromQueryable(
+                EventList.LoadFromQueryable(
                     scheduledEvents
                         .OrderBy(x => x.HeatingZoneName)
                         .ThenBy(x => x.Time)
                         .AsQueryable());
             }
 
-            HeatingZones = await heatingZoneService.GetAllAsync();
+            if (!Context.IsPostBack)
+            {
+                Zones = (await heatingZoneService.GetAllAsync()).ToList();
+                Zones.Insert(0, new ZoneListListModel(AllZonesId, "-- Všechny zóny --", ""));
+            }
+
             await base.PreRender();
         }
 
         public async Task Delete(int id)
         {
             await scheduledEventService.DeleteAsync(id);
-            ScheduledEventList.RequestRefresh();
+            EventList.RequestRefresh();
         }
 
         public async Task Clone(int id)
@@ -63,7 +81,12 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.Events.EventList
 
         public void ReloadData()
         {
-            ScheduledEventList.RequestRefresh();
+            EventList.RequestRefresh();
+        }
+
+        public void ChangeFilter(int selectedZoneId)
+        {
+            EventList.RequestRefresh();
         }
     }
 }

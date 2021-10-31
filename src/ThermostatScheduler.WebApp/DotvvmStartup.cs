@@ -19,13 +19,14 @@ namespace ThermostatScheduler.WebApp
         private void ConfigureRoutes(DotvvmConfiguration config, string applicationPath)
         {
             config.RouteTable.Add(Routes.Default, "", "Pages/Default/Default.dothtml");
-            
+
             // Admin
             config.RouteTable.Add(Routes.Admin.Zones.ZoneCreate, "admin/zones/create", "Pages/Admin/Zones/ZoneDetail/ZoneDetail.dothtml");
             config.RouteTable.Add(Routes.Admin.Zones.ZoneEdit, "admin/zones/edit/{Id}", "Pages/Admin/Zones/ZoneDetail/ZoneDetail.dothtml");
             config.RouteTable.Add(Routes.Admin.Events.EventCreate, "admin/events/create", "Pages/Admin/Events/EventDetail/EventDetail.dothtml");
             config.RouteTable.Add(Routes.Admin.Events.EventEdit, "admin/events/edit/{Id}", "Pages/Admin/Events/EventDetail/EventDetail.dothtml");
-            
+            config.RouteTable.Add(Routes.Admin.Events.EventList, "admin/events/list/{ZoneId?}", "Pages/Admin/Events/EventList/EventList.dothtml");
+
             // HomeAssistant
             config.RouteTable.Add(Routes.HomeAssistant.Zones.TemporaryTemperature, "ha/zones/temporary-temperature/{Code}", "Pages/HomeAssistant/Zones/TemporaryTemperature/TemporaryTemperature.dothtml");
 
