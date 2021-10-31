@@ -158,6 +158,9 @@
                              class="form-control"         
                              Validator.Value="{value: Model.ValidFrom}"                   
                              Changed="{staticCommand: Model.ValidTo = Model.ValidFrom}"/>
+                        <dot:Validator Value="{value: Model.ValidFrom}"
+                                       ShowErrorMessageText="true"
+                                       class="invalid-feedback" />
             </div>
         </div>
     </form>

@@ -7,7 +7,7 @@ using ThermostatScheduler.Common;
 
 namespace ThermostatScheduler.WebApp.Models
 {
-    public class ScheduledEventDetailModel
+    public class ScheduledEventDetailModel : IValidatableObject
     {
         public int Id { get; set; }
 
@@ -54,6 +54,18 @@ namespace ThermostatScheduler.WebApp.Models
 
         public ScheduledEventDetailModel()
         {
+        }
+        
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (SelectedScheduleMode == ScheduleMode.OneTimeOnly
+                && ValidFrom == null)
+            {
+                yield return new ValidationResult(
+                    "Datum musí být nastaveno.",
+                    new[] { nameof(ValidFrom) }
+                );
+            }
         }
     }
 }
