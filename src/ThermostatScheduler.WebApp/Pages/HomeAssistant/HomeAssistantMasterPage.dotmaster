@@ -1,0 +1,10 @@
+﻿@viewModel ThermostatScheduler.WebApp.Pages.HomeAssistant.HomeAssistantMasterPageViewModel, ThermostatScheduler.WebApp
+@masterPage Pages/MasterPage.dotmaster
+@import ThermostatScheduler.WebApp
+
+<dot:Content ContentPlaceHolderID="Body">
+    <div class="container bg-body">
+        <dot:ContentPlaceHolder ID="MainContent" />
+    <div>
+  </div>
+</dot:Content>

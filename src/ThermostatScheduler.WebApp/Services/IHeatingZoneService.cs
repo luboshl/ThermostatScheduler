@@ -9,8 +9,9 @@ namespace ThermostatScheduler.WebApp.Services
     {
         Task<ICollection<HeatingZoneListModel>> GetAllAsync();
         Task<HeatingZoneDetailModel> GetByIdAsync(int id);
-        Task CreateAsync(HeatingZoneDetailModel model);
-        Task UpdateAsync(HeatingZoneDetailModel model);
+        Task<HeatingZoneDetailModel> GetNameByCodeAsync(string code);
+        Task CreateAsync(string name, string code);
+        Task UpdateAsync(int id, string name, string code);
         Task DeleteAsync(int id);
     }
 }

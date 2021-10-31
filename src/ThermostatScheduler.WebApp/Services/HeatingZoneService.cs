@@ -33,16 +33,23 @@ namespace ThermostatScheduler.WebApp.Services
             return new HeatingZoneDetailModel(entity.Id, entity.Name, entity.Code);
         }
 
-        public async Task CreateAsync(HeatingZoneDetailModel model)
+        public async Task<HeatingZoneDetailModel> GetNameByCodeAsync(string code)
         {
-            var entity = new HeatingZone(model.Name, model.Code);
+            var entities = await heatingZoneRepository.GetAsync(x => x.Code == code);
+            var entity = entities.Single();
+            return new HeatingZoneDetailModel(entity.Id, entity.Name, entity.Code);
+        }
+
+        public async Task CreateAsync(string name, string code)
+        {
+            var entity = new HeatingZone(name, code);
             await heatingZoneRepository.CreateAsync(entity);
         }
 
-        public async Task UpdateAsync(HeatingZoneDetailModel model)
+        public async Task UpdateAsync(int id, string name, string code)
         {
-            var entity = new HeatingZone(model.Name, model.Code);
-            await heatingZoneRepository.UpdateAsync(model.Id, entity);
+            var entity = new HeatingZone(name, code);
+            await heatingZoneRepository.UpdateAsync(id, entity);
         }
 
         public async Task DeleteAsync(int id)

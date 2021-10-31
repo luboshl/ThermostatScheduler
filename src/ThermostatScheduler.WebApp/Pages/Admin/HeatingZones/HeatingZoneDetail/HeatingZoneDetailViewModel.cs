@@ -39,11 +39,11 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.HeatingZones.HeatingZoneDetail
         {
             if (IsEditMode)
             {
-                await heatingZoneService.UpdateAsync(Model);
+                await heatingZoneService.UpdateAsync(Model.Id, Model.Name, Model.Code);
             }
             else
             {
-                await heatingZoneService.CreateAsync(Model);
+                await heatingZoneService.CreateAsync(Model.Name, Model.Code);
             }
 
             Context.RedirectToRoute(Routes.Admin.HeatingZones.HeatingZoneList);

@@ -14,6 +14,7 @@
                     <div class="navbar-nav">
                         <dot:RouteLink Text="Zóny vytápění" RouteName="{resource: Routes.Admin.HeatingZones.HeatingZoneList}" class="nav-link" />
                         <dot:RouteLink Text="Časový program vytápění" RouteName="{resource: Routes.Admin.ScheduledEvents.ScheduledEventList}" class="nav-link" />
+                        <dot:RouteLink Text="Test" RouteName="{resource: Routes.HomeAssistant.Zones.TemporaryTemperature}" Param-Code="pokus" class="nav-link" />
                     </div>
                 </div>
             </div>
