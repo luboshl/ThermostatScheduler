@@ -55,7 +55,7 @@ namespace ThermostatScheduler.WebApp.Models
         public ScheduledEventDetailModel()
         {
         }
-        
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (SelectedScheduleMode == ScheduleMode.OneTimeOnly
@@ -64,6 +64,22 @@ namespace ThermostatScheduler.WebApp.Models
                 yield return new ValidationResult(
                     "Datum musí být nastaveno.",
                     new[] { nameof(ValidFrom) }
+                );
+            }
+
+            if (ValidFrom != null && ValidFrom.Value < DateTime.Today)
+            {
+                yield return new ValidationResult(
+                    "Platnost nemůže být v minulosti.",
+                    new[] { nameof(ValidFrom) }
+                );
+            }
+
+            if (ValidTo != null && ValidTo.Value < DateTime.Today)
+            {
+                yield return new ValidationResult(
+                    "Platnost nemůže být v minulosti.",
+                    new[] { nameof(ValidTo) }
                 );
             }
         }
