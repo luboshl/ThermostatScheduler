@@ -24,55 +24,67 @@
                                    IncludeErrorsFromChildren="true" class="alert alert-danger" role="alert"  HideWhenValid="true"/>
         </div>
         --%>
-
         <form Validator.InvalidCssClass="is-invalid">
-        
-            <div class="row mb-3">
-                <label for="temperature" class="col-sm-2 col-form-label">Teplota</label>
-                <div class="col-sm-4">
-                    <dot:TextBox ID="temperature"
-                                 Text="{value: Model.Temperature}"
-                                 class="form-control"
-                                 autofocus="true"
-                                 Validator.Value="{value: Model.Temperature}" />
-                    <dot:Validator Value="{value: Model.Temperature}"
-                                   ShowErrorMessageText="true"
-                                   class="invalid-feedback" />
+
+            <div class="row mb-1">
+                <div class="col-2">
+                    <label>Teplota</label>
+                </div>
+
+                <div class="col-7">
+                    <label>Doba platnosti</label>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="hours" class="col-sm-2 col-form-label">Hodiny</label>
-                <div class="col-sm-4">
-                    <dot:TextBox ID="hours"
-                                 Text="{value: Model.Hours}"
-                                 class="form-control"
-                                 Validator.Value="{value: Model.Hours}" />
-                    <dot:Validator Value="{value: Model.Hours}"
-                                   ShowErrorMessageText="true"
-                                   class="invalid-feedback" />
+            <div class="row">
+                <div class="col-2">
+                    <div>
+                        <dot:TextBox ID="temperature"
+                                     Text="{value: Model.Temperature}"
+                                     class="form-control"
+                                     autofocus="true"
+                                     Validator.Value="{value: Model.Temperature}" />
+                        <dot:Validator Value="{value: Model.Temperature}"
+                                       ShowErrorMessageText="true"
+                                       class="invalid-feedback" />
+                    </div>
                 </div>
-            </div>
-       
-        
-            <div class="row mb-3">
-                <label for="minutes" class="col-sm-2 col-form-label">Minuty</label>
-                <div class="col-sm-4 has-validation">
-                    <dot:TextBox ID="minutes"
-                                 Text="{value: Model.Minutes}"
-                                 class="form-control"
-                                 Validator.Value="{value: Model.Minutes}" />
-                    <dot:Validator Value="{value: Model.Minutes}"
-                                   ShowErrorMessageText="true"
-                                   class="invalid-feedback" />
+
+                <div class="col-7">
+                    <div class="row">
+                        <div class="input-group mb-3">
+                            <dot:TextBox ID="hours"
+                                         Text="{value: Model.Hours}"
+                                         class="form-control"
+                                         Validator.Value="{value: Model.Hours}" />
+                            <dot:Validator Value="{value: Model.Hours}"
+                                           ShowErrorMessageText="true"
+                                           class="invalid-feedback" />
+
+                            <span class="input-group-text">hod.</span>
+
+                            <dot:TextBox ID="minutes"
+                                         Text="{value: Model.Minutes}"
+                                         class="form-control"
+                                         Validator.Value="{value: Model.Minutes}" />
+                            <dot:Validator Value="{value: Model.Minutes}"
+                                           ShowErrorMessageText="true"
+                                           class="invalid-feedback" />
+
+                            <span class="input-group-text">min.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <dot:Button Text="Nastavit"
+                                Click="{command: Save()}"
+                                class="btn btn-primary" />
+
                 </div>
             </div>
 
         </form>
-
-        <dot:Button Text="Uložit"
-                    Click="{command: Save()}"
-                    class="btn btn-primary" />
 
     </div>
 </dot:Content>

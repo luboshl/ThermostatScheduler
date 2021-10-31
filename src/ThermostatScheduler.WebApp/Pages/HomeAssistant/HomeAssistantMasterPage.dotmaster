@@ -3,7 +3,7 @@
 @import ThermostatScheduler.WebApp
 
 <dot:Content ContentPlaceHolderID="Body">
-    <div class="container bg-body">
+    <div class="container-fluid bg-body">
         <dot:ContentPlaceHolder ID="MainContent" />
     <div>
   </div>
