@@ -4,36 +4,55 @@
 
 <dot:Content ContentPlaceHolderID="MainContent">
     <h1 class="mb-4">{{value: IsEditMode ? "Úprava" : "Vytvoření" }} topné zóny</h1>
-           
-    <div class="row mb-3" IncludeInPage="{value: IsEditMode}">
-        <label for="id" class="col-sm-2 col-form-label">ID</label>
-        <div class="col-sm-2">
-            <dot:TextBox ID="id"
-                         class="form-control"
-                         Text="{value: Model.Id}"
-                         Enabled="false" />
-        </div>
-    </div>
 
+    <%--
     <div class="row mb-3">
-        <label for="name" class="col-sm-2 col-form-label">Název zóny</label>
-        <div class="col-sm-4">
-            <dot:TextBox ID="name"
-                         Text="{value: Model.Name}"
-                         class="form-control"
-                         FormatString="H:mm"
-                         autoFocus="true" />
-        </div>
+        <dot:ValidationSummary class="alert alert-danger px-5" role="alert"
+                               IncludeErrorsFromChildren="true" class="alert alert-danger" role="alert"  HideWhenValid="true"/>
     </div>
+    --%>
+
+    <form Validator.InvalidCssClass="is-invalid">
+
+        <div class="row mb-3" IncludeInPage="{value: IsEditMode}">
+            <label for="id" class="col-sm-2 col-form-label">ID</label>
+            <div class="col-sm-2">
+                <dot:TextBox ID="id"
+                             class="form-control"
+                             Text="{value: Model.Id}"
+                             Enabled="false" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="name" class="col-sm-2 col-form-label">Název zóny</label>
+            <div class="col-sm-4">
+                <dot:TextBox ID="name"
+                             Text="{value: Model.Name}"
+                             class="form-control"
+                             FormatString="H:mm"
+                             autoFocus="true"
+                             Validator.Value="{value: Model.Name}" />                
+                <dot:Validator Value="{value: Model.Name}"
+                               ShowErrorMessageText="true"
+                               class="invalid-feedback" />
+            </div>
+        </div>
             
-    <div class="row mb-3">
-        <label for="code" class="col-sm-2 col-form-label">Kód zóny</label>
-        <div class="col-sm-4">
-            <dot:TextBox ID="code"
-                         Text="{value: Model.Code}"
-                         class="form-control" />
+        <div class="row mb-3">
+            <label for="code" class="col-sm-2 col-form-label">Kód zóny</label>
+            <div class="col-sm-4">
+                <dot:TextBox ID="code"
+                             Text="{value: Model.Code}"
+                             class="form-control"
+                             Validator.Value="{value: Model.Code}" />
+                <dot:Validator Value="{value: Model.Code}"
+                               ShowErrorMessageText="true"
+                               class="invalid-feedback" />
+            </div>
         </div>
-    </div>
+
+    </form>
 
     <dot:RouteLink RouteName="{resource: Routes.HeatingZones.HeatingZoneList}"
                    Text="Zpět"

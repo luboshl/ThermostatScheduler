@@ -5,128 +5,162 @@
 
 <dot:Content ContentPlaceHolderID="MainContent">
     <h1 class="mb-4">{{value: IsEditMode ? "Úprava" : "Vytvoření"}} položky časového programu vytápění</h1>
-           
-    <div class="row mb-3" IncludeInPage="{value: IsEditMode}">
-        <label for="id" class="col-sm-2 col-form-label">ID</label>
-        <div class="col-sm-2">
-            <dot:TextBox ID="id"
-                         class="form-control"
-                         Text="{value: Model.Id}"
-                         Enabled="false" />
-        </div>
-    </div>
 
+    <%--
     <div class="row mb-3">
-        <label for="zone" class="col-sm-2 col-form-label">Zóna</label>
-        <div class="col-sm-4">
-            <dot:ComboBox id="zone"
-                          DataSource="{value: HeatingZones}"
-                          SelectedValue="{value: Model.HeatingZoneId}"
-                          ItemTextBinding="{value: Name}"
-                          ItemValueBinding="{value: Id}"
-                          placeholder="Zvolte zónu"
-                          class="form-select"
-                          autoFocus="{value: !IsEditMode}" />
-        </div>
+        <dot:ValidationSummary class="alert alert-danger px-5" role="alert"
+                               IncludeErrorsFromChildren="true" class="alert alert-danger" role="alert"  HideWhenValid="true"/>
     </div>
-    
-    <div class="row mb-3">
-        <label for="time" class="col-sm-2 col-form-label">Čas</label>
-        <div class="col-sm-4">
-            <dot:TextBox ID="time"
-                         Text="{value: Model.Time}"
-                         class="form-control"
-                         FormatString="H:mm"
-                         autoFocus="{value: IsEditMode}" />
-        </div>
-    </div>
-            
-    <div class="row mb-3">
-        <label for="temperature" class="col-sm-2 col-form-label">Teplota</label>
-        <div class="col-sm-4">
-            <dot:TextBox ID="temperature"
-                         Text="{value: Model.Temperature}"
-                         class="form-control" />
-        </div>
-    </div>
+    --%>
 
-    <div class="row mb-3">
-        <label class="col-sm-2 col-form-label">Režim</label>
-        <div class="col-sm-4">
-            <div class="form-check">
-                <dot:RadioButton CheckedItem="{value: Model.SelectedScheduleMode}"
-                                 CheckedValue="{value: ScheduleMode.RepeatDaily}"
-                                 GroupName="ModeGroup"
-                                 class="form-check-input"
-                                 ID="modeRepeatDaily"/>
-                <label class="form-check-label" for="modeRepeatDaily">
-                    Denně
-                </label>
-            </div>
+    <form Validator.InvalidCssClass="is-invalid">
 
-            <div class="form-check">
-                <dot:RadioButton CheckedItem="{value: Model.SelectedScheduleMode}"
-                                 CheckedValue="{value: ScheduleMode.OneTimeOnly}"
-                                 GroupName="ModeGroup"
-                                 class="form-check-input"
-                                 ID="modeOneTime"/>
-                <label class="form-check-label" for="modeOneTime">
-                    Jednorázově
-                </label>
+        <div class="row mb-3" IncludeInPage="{value: IsEditMode}">
+            <label for="id" class="col-sm-2 col-form-label">ID</label>
+            <div class="col-sm-2">
+                <dot:TextBox ID="id"
+                             class="form-control"
+                             Text="{value: Model.Id}"
+                             Enabled="false" />
             </div>
         </div>
-    </div>
 
-    <div IncludeInPage="{value: Model.SelectedScheduleMode == ScheduleMode.RepeatDaily}">
         <div class="row mb-3">
-            <label for="validFrom" class="col-sm-2 col-form-label"></label>
+            <label for="zone" class="col-sm-2 col-form-label">Zóna</label>
             <div class="col-sm-4">
-                <div class="form-check form-switch">
-                    <dot:CheckBox ID="isValidityCheck"
-                                  Checked="{value: Model.IsValiditySet}"
-                                  class="form-check-input"
-                                  Changed="{staticCommand: Model.ValidFrom = null; Model.ValidTo = null;}" />
-                    <label class="form-check-label" for="isValidityCheck">Omezená platnost</label>
+                <dot:ComboBox id="zone"
+                              DataSource="{value: HeatingZones}"
+                              SelectedValue="{value: Model.HeatingZoneId}"
+                              ItemTextBinding="{value: Name}"
+                              ItemValueBinding="{value: Id}"
+                              placeholder="Zvolte zónu"
+                              class="form-select"
+                              autoFocus="{value: !IsEditMode}"
+                              Validator.Value="{value: Model.HeatingZoneId}" />
+                <dot:Validator Value="{value: Model.HeatingZoneId}"
+                               ShowErrorMessageText="true"
+                               class="invalid-feedback" />
+            </div>
+        </div>
+    
+          <div class="invalid-feedback">
+            You must agree before submitting.
+          </div>
+        <div class="row mb-3">
+            <label for="time" class="col-sm-2 col-form-label">Čas</label>
+            <div class="col-sm-4 has-validation">
+                <dot:TextBox ID="time"
+                             Text="{value: Model.Time}"
+                             class="form-control"
+                             FormatString="H:mm"
+                             autoFocus="{value: IsEditMode}"
+                             Validator.Value="{value: Model.Time}" />
+                <dot:Validator Value="{value: Model.Time}"
+                               ShowErrorMessageText="true"
+                               class="invalid-feedback" />
+            </div>
+        </div>
+            
+        <div class="row mb-3">
+            <label for="temperature" class="col-sm-2 col-form-label">Teplota</label>
+            <div class="col-sm-4">
+                <dot:TextBox ID="temperature"
+                             Text="{value: Model.Temperature}"
+                             class="form-control"
+                             Validator.Value="{value: Model.Temperature}" />
+                <dot:Validator Value="{value: Model.Temperature}"
+                               ShowErrorMessageText="true"
+                               class="invalid-feedback" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Režim</label>
+            <div class="col-sm-4">
+                <div class="form-check">
+                    <dot:RadioButton CheckedItem="{value: Model.SelectedScheduleMode}"
+                                     CheckedValue="{value: ScheduleMode.RepeatDaily}"
+                                     GroupName="ModeGroup"
+                                     class="form-check-input"
+                                     ID="modeRepeatDaily"/>
+                    <label class="form-check-label" for="modeRepeatDaily">
+                        Denně
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <dot:RadioButton CheckedItem="{value: Model.SelectedScheduleMode}"
+                                     CheckedValue="{value: ScheduleMode.OneTimeOnly}"
+                                     GroupName="ModeGroup"
+                                     class="form-check-input"
+                                     ID="modeOneTime"/>
+                    <label class="form-check-label" for="modeOneTime">
+                        Jednorázově
+                    </label>
                 </div>
             </div>
         </div>
 
-        <div IncludeInPage="{value: Model.IsValiditySet}">
+        <div IncludeInPage="{value: Model.SelectedScheduleMode == ScheduleMode.RepeatDaily}">
             <div class="row mb-3">
-                <label for="validFrom" class="col-sm-2 col-form-label">Platnost od</label>
+                <label for="validFrom" class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-4">
-                    <dot:TextBox ID="validFrom"
-                                 Text="{value: Model.ValidFrom}"
-                                 FormatString="dd.MM.yyyy"
-                                 placeholder="dd.MM.yyyy"
-                                 class="form-control" />
+                    <div class="form-check form-switch">
+                        <dot:CheckBox ID="isValidityCheck"
+                                      Checked="{value: Model.IsValiditySet}"
+                                      class="form-check-input"
+                                      Changed="{staticCommand: Model.ValidFrom = null; Model.ValidTo = null;}" />
+                        <label class="form-check-label" for="isValidityCheck">Omezená platnost</label>
+                    </div>
                 </div>
             </div>
+
+            <div IncludeInPage="{value: Model.IsValiditySet}">
+                <div class="row mb-3">
+                    <label for="validFrom" class="col-sm-2 col-form-label">Platnost od</label>
+                    <div class="col-sm-4">
+                        <dot:TextBox ID="validFrom"
+                                     Text="{value: Model.ValidFrom}"
+                                     FormatString="dd.MM.yyyy"
+                                     placeholder="dd.MM.yyyy"
+                                     class="form-control"
+                             Validator.Value="{value: Model.ValidFrom}" />
+                        <dot:Validator Value="{value: Model.ValidFrom}"
+                                       ShowErrorMessageText="true"
+                                       class="invalid-feedback" />
+                    </div>
+                </div>
             
-            <div class="row mb-3">
-                <label for="validTo" class="col-sm-2 col-form-label">Platnost do</label>
-                <div class="col-sm-4">
-                    <dot:TextBox ID="validTo"
-                                 Text="{value: Model.ValidTo}"
-                                 FormatString="dd.MM.yyyy"
-                                 placeholder="dd.MM.yyyy"
-                                 class="form-control" />
+                <div class="row mb-3">
+                    <label for="validTo" class="col-sm-2 col-form-label">Platnost do</label>
+                    <div class="col-sm-4">
+                        <dot:TextBox ID="validTo"
+                                     Text="{value: Model.ValidTo}"
+                                     FormatString="dd.MM.yyyy"
+                                     placeholder="dd.MM.yyyy"
+                                     class="form-control"
+                             Validator.Value="{value: Model.ValidTo}" />
+                        <dot:Validator Value="{value: Model.ValidTo}"
+                                       ShowErrorMessageText="true"
+                                       class="invalid-feedback" />
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     
-    <div class="row mb-3" IncludeInPage="{value: Model.SelectedScheduleMode == ScheduleMode.OneTimeOnly}">
-        <label for="validFrom" class="col-sm-2 col-form-label">Datum</label>
-        <div class="col-sm-4">
-            <dot:TextBox ID="validFrom"
-                         Text="{value: Model.ValidFrom}"
-                         FormatString="dd.MM.yyyy"
-                         placeholder="dd.MM.yyyy"
-                         class="form-control"                            
-                         Changed="{staticCommand: Model.ValidTo = Model.ValidFrom}"/>
+        <div class="row mb-3" IncludeInPage="{value: Model.SelectedScheduleMode == ScheduleMode.OneTimeOnly}">
+            <label for="validFrom" class="col-sm-2 col-form-label">Datum</label>
+            <div class="col-sm-4">
+                <dot:TextBox ID="validFrom"
+                             Text="{value: Model.ValidFrom}"
+                             FormatString="dd.MM.yyyy"
+                             placeholder="dd.MM.yyyy"
+                             class="form-control"         
+                             Validator.Value="{value: Model.ValidFrom}"                   
+                             Changed="{staticCommand: Model.ValidTo = Model.ValidFrom}"/>
+            </div>
         </div>
-    </div>
+    </form>
 
     <dot:RouteLink RouteName="{resource: Routes.ScheduledEvents.ScheduledEventList}"
                    Text="Zpět"

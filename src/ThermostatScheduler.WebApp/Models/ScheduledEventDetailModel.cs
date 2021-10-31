@@ -14,12 +14,14 @@ namespace ThermostatScheduler.WebApp.Models
         [Range(1, int.MaxValue, ErrorMessage = "Zóna musí být zvolena")]
         public int HeatingZoneId { get; set; }
 
+        [Bind(Direction.ServerToClient)]
         public string HeatingZoneName { get; set; } = null!;
 
         [Required]
         public DateTime Time { get; set; }
 
         [Required]
+        [Range(1, 30)]
         public double Temperature { get; set; }
 
         public DateTime? ValidFrom { get; set; }
