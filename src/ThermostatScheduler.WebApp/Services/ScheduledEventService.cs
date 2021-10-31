@@ -9,7 +9,8 @@ using ThermostatScheduler.Common.Infrastructure;
 using ThermostatScheduler.Persistence.Model;
 using ThermostatScheduler.Persistence.Repositories;
 using ThermostatScheduler.Processing;
-using ThermostatScheduler.WebApp.Models;
+using ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventDetail;
+using ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventList;
 
 namespace ThermostatScheduler.WebApp.Services
 {

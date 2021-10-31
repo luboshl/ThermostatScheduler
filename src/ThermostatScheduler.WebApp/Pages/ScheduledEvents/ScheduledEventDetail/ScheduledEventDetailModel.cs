@@ -5,7 +5,7 @@ using System.Linq;
 using DotVVM.Framework.ViewModel;
 using ThermostatScheduler.Common;
 
-namespace ThermostatScheduler.WebApp.Models
+namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventDetail
 {
     public class ScheduledEventDetailModel : IValidatableObject
     {

@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using DotVVM.Framework.ViewModel;
-using ThermostatScheduler.WebApp.Models;
 using ThermostatScheduler.WebApp.Services;
 
 namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneDetail

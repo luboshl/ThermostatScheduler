@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DotVVM.Framework.Controls;
-using ThermostatScheduler.WebApp.Models;
+using ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneList;
 using ThermostatScheduler.WebApp.Services;
 
 namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventList

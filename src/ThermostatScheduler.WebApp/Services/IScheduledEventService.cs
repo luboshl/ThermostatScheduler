@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ThermostatScheduler.WebApp.Models;
+using ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventDetail;
+using ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventList;
 
 namespace ThermostatScheduler.WebApp.Services
 {

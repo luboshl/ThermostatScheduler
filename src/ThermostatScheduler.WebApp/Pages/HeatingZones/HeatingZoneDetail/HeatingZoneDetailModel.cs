@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ThermostatScheduler.WebApp.Models
+namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneDetail
 {
     public class HeatingZoneDetailModel
     {

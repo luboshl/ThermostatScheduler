@@ -1,7 +1,7 @@
 ﻿using System;
 using ThermostatScheduler.Common;
 
-namespace ThermostatScheduler.WebApp.Models
+namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventList
 {
     public class ScheduledEventListModel
     {

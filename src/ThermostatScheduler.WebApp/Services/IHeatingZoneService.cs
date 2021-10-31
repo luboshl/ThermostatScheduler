@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ThermostatScheduler.WebApp.Models;
+using ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneDetail;
+using ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneList;
 
 namespace ThermostatScheduler.WebApp.Services
 {

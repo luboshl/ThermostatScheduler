@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using DotVVM.Framework.Controls;
 using DotVVM.Framework.ViewModel.Validation;
 using ThermostatScheduler.WebApp.Exceptions;
-using ThermostatScheduler.WebApp.Models;
 using ThermostatScheduler.WebApp.Services;
 
 namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneList
