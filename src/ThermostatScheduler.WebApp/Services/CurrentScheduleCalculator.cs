@@ -36,8 +36,8 @@ namespace ThermostatScheduler.WebApp.Services
         private ScheduledEvent? GetLatestPreviousEvent(IEnumerable<ScheduledEvent> eventsOfZone)
         {
             return eventsOfZone
-                .Where(x => x.ValidFrom == null || x.ValidFrom.Value < dateTimeProvider.Now)
-                .Where(x => x.ValidTo == null || dateTimeProvider.Now < x.ValidTo.Value)
+                .Where(x => x.ValidFrom == null || x.ValidFrom.Value <= dateTimeProvider.Now)
+                .Where(x => x.ValidTo == null || dateTimeProvider.Now < x.ValidTo.Value.AddDays(1))
                 .OrderBy(x => CalculatePastDateTime(x.Time))
                 .LastOrDefault();
         }
