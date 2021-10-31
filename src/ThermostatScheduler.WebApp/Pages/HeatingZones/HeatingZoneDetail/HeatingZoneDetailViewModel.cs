@@ -3,9 +3,9 @@ using DotVVM.Framework.ViewModel;
 using ThermostatScheduler.WebApp.Models;
 using ThermostatScheduler.WebApp.Services;
 
-namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneEdit
+namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneDetail
 {
-    public class HeatingZoneEditViewModel : MasterPageViewModel
+    public class HeatingZoneDetailViewModel : MasterPageViewModel
     {
         private readonly IHeatingZoneService heatingZoneService;
 
@@ -16,7 +16,7 @@ namespace ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneEdit
 
         public HeatingZoneDetailModel Model { get; set; } = null!;
 
-        public HeatingZoneEditViewModel(IDependencies dependencies, IHeatingZoneService heatingZoneService)
+        public HeatingZoneDetailViewModel(IDependencies dependencies, IHeatingZoneService heatingZoneService)
             : base(dependencies)
         {
             this.heatingZoneService = heatingZoneService;

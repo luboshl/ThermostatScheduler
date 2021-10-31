@@ -6,9 +6,9 @@ using ThermostatScheduler.Common;
 using ThermostatScheduler.WebApp.Models;
 using ThermostatScheduler.WebApp.Services;
 
-namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventEdit
+namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventDetail
 {
-    public class ScheduledEventEditViewModel : MasterPageViewModel
+    public class ScheduledEventDetailViewModel : MasterPageViewModel
     {
         private readonly IScheduledEventService scheduledEventService;
         private readonly IHeatingZoneService heatingZoneService;
@@ -21,7 +21,7 @@ namespace ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventEdit
         public ScheduledEventDetailModel Model { get; set; } = null!;
         public ICollection<HeatingZoneListModel> HeatingZones { get; set; } = null!;
 
-        public ScheduledEventEditViewModel(IDependencies dependencies,
+        public ScheduledEventDetailViewModel(IDependencies dependencies,
                                            IScheduledEventService scheduledEventService,
                                            IHeatingZoneService heatingZoneService)
             : base(dependencies)

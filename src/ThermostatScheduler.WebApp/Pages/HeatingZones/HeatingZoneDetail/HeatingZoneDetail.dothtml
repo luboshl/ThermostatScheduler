@@ -1,4 +1,4 @@
-﻿@viewModel ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneEdit.HeatingZoneEditViewModel, ThermostatScheduler.WebApp
+﻿@viewModel ThermostatScheduler.WebApp.Pages.HeatingZones.HeatingZoneDetail.HeatingZoneDetailViewModel, ThermostatScheduler.WebApp
 @masterPage Pages/MasterPage.dotmaster
 @import ThermostatScheduler.WebApp
 

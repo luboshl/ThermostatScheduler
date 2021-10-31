@@ -1,4 +1,4 @@
-﻿@viewModel ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventEdit.ScheduledEventEditViewModel, ThermostatScheduler.WebApp
+﻿@viewModel ThermostatScheduler.WebApp.Pages.ScheduledEvents.ScheduledEventDetail.ScheduledEventDetailViewModel, ThermostatScheduler.WebApp
 @masterPage Pages/MasterPage.dotmaster
 @import ThermostatScheduler.WebApp
 @import ThermostatScheduler.Common
