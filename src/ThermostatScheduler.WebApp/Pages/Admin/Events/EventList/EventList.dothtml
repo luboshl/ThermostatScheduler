@@ -12,19 +12,21 @@
                            RouteName="{resource: Routes.Admin.Events.EventCreate}"
                            class="btn btn-primary mb-3" />
         </div>
-        <div class="col-auto">
-            <label class="col-form-label">Filtr zóny</label>
-        </div>
-        <div class="col-auto">
-            <div>
-                <dot:ComboBox DataSource="{value: Zones}"
-                              SelectedValue="{value: SelectedZoneId}"
-                              ItemTextBinding="{value: Name}"
-                              ItemValueBinding="{value: Id}"
-                              placeholder="Zvolte zónu"
-                              class="form-select"
-                              autofocus="true"
-                              SelectionChanged="{command: ChangeFilter(SelectedZoneId)}"/>
+        <div class="row col-auto">
+            <div class="col-auto">
+                <label class="col-form-label">Filtr zóny</label>
+            </div>
+            <div class="col-auto">
+                <div>
+                    <dot:ComboBox DataSource="{value: Zones}"
+                                    SelectedValue="{value: SelectedZoneId}"
+                                    ItemTextBinding="{value: Name}"
+                                    ItemValueBinding="{value: Id}"
+                                    placeholder="Zvolte zónu"
+                                    class="form-select"
+                                    autofocus="true"
+                                    SelectionChanged="{command: ChangeFilter(SelectedZoneId)}"/>
+                </div>
             </div>
         </div>
     </div>

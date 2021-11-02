@@ -61,7 +61,7 @@
                                            ShowErrorMessageText="true"
                                            class="invalid-feedback" />
 
-                            <span class="input-group-text py-1">hod.</span>
+                            <span class="input-group-text px-1 py-1">hod.</span>
 
                             <dot:TextBox ID="minutes"
                                          Text="{value: Model.Minutes}"
@@ -71,7 +71,7 @@
                                            ShowErrorMessageText="true"
                                            class="invalid-feedback" />
 
-                            <span class="input-group-text py-1">min.</span>
+                            <span class="input-group-text px-1 py-1">min.</span>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                 <div class="col-3 pe-0">
                     <dot:Button ButtonTagName="button"
                                 Click="{command: Save()}"
-                                class="btn btn-primary p-1">
+                                class="btn btn-primary px-2 py-1">
                         <i class="fa fa-save" />
                     </dot:Button>
 
@@ -87,7 +87,7 @@
                                    Param-ZoneId="{value: Model.Id}"
                                    Text="Zpět"
                                    target="_blank"
-                                   class="btn btn-secondary p-1">
+                                   class="btn btn-secondary px-2 py-1">
                         <i class="fa fa-list" />
                     </dot:RouteLink>
                 </div>
