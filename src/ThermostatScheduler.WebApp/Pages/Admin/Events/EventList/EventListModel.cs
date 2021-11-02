@@ -56,7 +56,7 @@ namespace ThermostatScheduler.WebApp.Pages.Admin.Events.EventList
 
             if (ValidFrom != null && ValidTo != null)
             {
-                return $"{GetDate(ValidFrom)}—{GetDate(ValidTo)}";
+                return $"{GetDate(ValidFrom)} - {GetDate(ValidTo)}";
             }
 
             if (ValidFrom != null)

@@ -6,9 +6,11 @@ Application is published as Docker image `hladik/thermostat-scheduler`.
 
 ## Screenshosts
 
-![Zones](doc/zones.png)
+![Zone list](doc/zone-list.png)
 
-![Schedule](doc/schedule.png)
+![Event list](doc/event-list.png)
+
+![Event detail](doc/event-detail.png)
 
 ## Frameworks and libraries used
 
@@ -19,6 +21,8 @@ Application is published as Docker image `hladik/thermostat-scheduler`.
 - MQTTnet - MQTT library, used MQTT client (https://github.com/chkr1011/MQTTnet)
 - Quartz.NET - scheduling framework (https://www.quartz-scheduler.net/)
 - Serilog - logging framework (https://github.com/serilog/serilog)
+- Bootstrap - https://getbootstrap.com/
+- Font Awesome - https://fontawesome.com
 
 ## License
 [MIT License](LICENSE)
