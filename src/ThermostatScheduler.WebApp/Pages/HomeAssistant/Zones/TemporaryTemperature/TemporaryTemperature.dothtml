@@ -6,15 +6,19 @@
     <h2>{{value: Model.Name}}</h2>
 
     <div Visible="{value: ShowSuccessAlert}">
-        <div id="successAlert" class="alert alert-success">
-            Úspěšně uloženo
+        <div class="d-flex">
+            <div id="successAlert" 
+                 class="alert alert-success">
+                Úspěšně uloženo
+            </div>
+            <div class="ps-2">
+                <dot:RouteLink RouteName="{resource: Routes.HomeAssistant.Zones.TemporaryTemperature}"
+                               Param-Code="{value: Model.Code}"
+                               Text="Zpět"
+                               class="btn btn-secondary">
+                </dot:RouteLink>
+            </div>
         </div>
-
-        <dot:RouteLink RouteName="{resource: Routes.HomeAssistant.Zones.TemporaryTemperature}"
-                       Param-Code="{value: Model.Code}"
-                       Text="Zpět"
-                       class="btn btn-secondary">
-        </dot:RouteLink>
     </div>
 
     <div Visible="{value: !ShowSuccessAlert}">
