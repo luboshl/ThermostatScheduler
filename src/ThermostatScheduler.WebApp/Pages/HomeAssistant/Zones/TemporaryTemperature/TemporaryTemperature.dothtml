@@ -26,70 +26,72 @@
         --%>
         <form Validator.InvalidCssClass="is-invalid">
 
-            <div class="row mb-1">
+            <div class="row">
                 <div class="col-2">
                     <label>Teplota</label>
                 </div>
 
-                <div class="col-7">
+                <div class="col-10">
                     <label>Doba platnosti</label>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-2 pe-0">
-                    <div>
-                        <dot:TextBox ID="temperature"
-                                     Text="{value: Model.Temperature}"
-                                     class="form-control py-1"
-                                     autofocus="true"
-                                     Validator.Value="{value: Model.Temperature}" />
-                        <dot:Validator Value="{value: Model.Temperature}"
-                                       ShowErrorMessageText="true"
-                                       class="invalid-feedback" />
-                    </div>
+                <div class="col-2">
+                    <dot:TextBox ID="temperature"
+                                 Text="{value: Model.Temperature}"
+                                 class="form-control py-1"
+                                 SelectAllOnFocus="true"
+                                 Validator.Value="{value: Model.Temperature}" />
+                    <dot:Validator Value="{value: Model.Temperature}"
+                                   ShowErrorMessageText="true"
+                                   class="invalid-feedback" />
                 </div>
+                
+                <div class="col">
+                    <div class="d-flex">
+                        <div class="pe-2">
+                            <dot:Button ButtonTagName="button"
+                                        Click="{staticCommand: Model.TotalMinutes = TemporaryTemperatureViewModel.IncreaseDuration(Model.TotalMinutes);}"
+                                        class="btn btn-secondary px-2 py-1">
+                                <i class="fa fa-arrow-up" />
+                            </dot:Button>
+                        </div>
+                            
+                        <div class="pe-2">
+                            <dot:ComboBox DataSource="{value: Model.Durations}"
+                                          SelectedValue="{value: Model.TotalMinutes}"
+                                          ItemTextBinding="{value: Display}"
+                                          ItemValueBinding="{value: TotalMinutes}"
+                                          class="form-select py-1" />
+                        </div>
+                        
+                        <div class="pe-2">
+                            <dot:Button ButtonTagName="button"
+                                        Click="{staticCommand: Model.TotalMinutes = TemporaryTemperatureViewModel.DecreaseDuration(Model.TotalMinutes);}"
+                                        class="btn btn-secondary px-2 py-1">
+                                <i class="fa fa-arrow-down" />
+                            </dot:Button>
+                        </div>
 
-                <div class="col-7 pe-0">
-                    <div class="row px-0">
-                        <div class="input-group">
-                            <dot:TextBox ID="hours"
-                                         Text="{value: Model.Hours}"
-                                         class="form-control py-1"
-                                         Validator.Value="{value: Model.Hours}" />
-                            <dot:Validator Value="{value: Model.Hours}"
-                                           ShowErrorMessageText="true"
-                                           class="invalid-feedback" />
+                        <div class="pe-2">
+                            <dot:Button ButtonTagName="button"
+                                        Click="{command: Save()}"
+                                        class="btn btn-primary px-2 py-1">
+                                <i class="fa fa-save" />
+                            </dot:Button>
+                        </div>
 
-                            <span class="input-group-text px-1 py-1">hod.</span>
-
-                            <dot:TextBox ID="minutes"
-                                         Text="{value: Model.Minutes}"
-                                         class="form-control py-1"
-                                         Validator.Value="{value: Model.Minutes}" />
-                            <dot:Validator Value="{value: Model.Minutes}"
-                                           ShowErrorMessageText="true"
-                                           class="invalid-feedback" />
-
-                            <span class="input-group-text px-1 py-1">min.</span>
+                        <div>
+                            <dot:RouteLink RouteName="{resource: Routes.Admin.Events.EventList}"
+                                           Param-ZoneId="{value: Model.Id}"
+                                           Text="Zpět"
+                                           target="_blank"
+                                           class="btn btn-secondary px-2 py-1">
+                                <i class="fa fa-list" />
+                            </dot:RouteLink>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-3 pe-0">
-                    <dot:Button ButtonTagName="button"
-                                Click="{command: Save()}"
-                                class="btn btn-primary px-2 py-1">
-                        <i class="fa fa-save" />
-                    </dot:Button>
-
-                    <dot:RouteLink RouteName="{resource: Routes.Admin.Events.EventList}"
-                                   Param-ZoneId="{value: Model.Id}"
-                                   Text="Zpět"
-                                   target="_blank"
-                                   class="btn btn-secondary px-2 py-1">
-                        <i class="fa fa-list" />
-                    </dot:RouteLink>
                 </div>
             </div>
 

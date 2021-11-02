@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using DotVVM.Framework.ViewModel;
 
 namespace ThermostatScheduler.WebApp.Pages.HomeAssistant.Zones.TemporaryTemperature
@@ -13,19 +14,17 @@ namespace ThermostatScheduler.WebApp.Pages.HomeAssistant.Zones.TemporaryTemperat
         [Range(1, 30)]
         public double Temperature { get; set; }
 
-        [Required]
-        [Range(0, 999)]
-        public int Hours { get; set; }
+        [Bind(Direction.ServerToClientFirstRequest)]
+        public List<DurationItem> Durations { get; set; }
 
-        [Required]
-        [Range(0, 999)]
-        public int Minutes { get; set; }
+        public int TotalMinutes { get; set; } = 5;
 
-        public TemporaryTemperatureModel(int id, string name, string code)
+        public TemporaryTemperatureModel(int id, string name, string code, List<DurationItem> durations)
         {
             Id = id;
             Name = name;
             Code = code;
+            Durations = durations;
         }
 
         public TemporaryTemperatureModel()

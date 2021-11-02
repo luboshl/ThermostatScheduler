@@ -69,11 +69,24 @@ namespace ThermostatScheduler.WebApp
                 .ValidateDataAnnotations();
 
             services.AddHostedService<SchedulerManager>(sp => sp.GetRequiredService<SchedulerManager>());
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins(
+                            "http://172.16.1.12",
+                            "http://172.16.1.164");
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors();
+
             // use DotVVM
             var dotvvmConfiguration = app.UseDotVVM<DotvvmStartup>(env.ContentRootPath);
             dotvvmConfiguration.AssertConfigurationIsValid();
