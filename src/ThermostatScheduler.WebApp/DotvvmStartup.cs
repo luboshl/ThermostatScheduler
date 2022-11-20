@@ -8,7 +8,6 @@ namespace ThermostatScheduler.WebApp
 {
     public class DotvvmStartup : IDotvvmStartup, IDotvvmServiceConfigurator
     {
-        // For more information about this class, visit https://dotvvm.com/docs/tutorials/basics-project-structure
         public void Configure(DotvvmConfiguration config, string applicationPath)
         {
             ConfigureRoutes(config, applicationPath);

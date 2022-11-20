@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using ThermostatScheduler.Common.Infrastructure;
 using ThermostatScheduler.Common.Infrastructure.Mqtt;
 
 namespace ThermostatScheduler.Processing
@@ -7,10 +8,13 @@ namespace ThermostatScheduler.Processing
     public class ThermostatMqttClient : IThermostatClient
     {
         private readonly IMqttPublisher mqttPublisher;
+        private readonly IDateTimeProvider dateTimeProvider;
 
-        public ThermostatMqttClient(IMqttPublisher mqttPublisher)
+        public ThermostatMqttClient(IMqttPublisher mqttPublisher,
+                                    IDateTimeProvider dateTimeProvider)
         {
             this.mqttPublisher = mqttPublisher;
+            this.dateTimeProvider = dateTimeProvider;
         }
 
         public Task SetTemperatureAsync(int scheduledEventId, string heatingZoneCode, string? heatingZoneName, double temperature)
@@ -20,10 +24,11 @@ namespace ThermostatScheduler.Processing
                 scheduledEventId,
                 heatingZoneCode,
                 heatingZoneName,
-                temperature
+                temperature,
+                timestamp = dateTimeProvider.Now.ToString("yyyy-MM-dd HH:mm:ss")
             };
 
-            string topic = $"thermostat/{heatingZoneCode}/set-temperature";
+            var topic = $"thermostat/{heatingZoneCode}/set-temperature";
             return mqttPublisher.PublishAsync(topic, payload.ToJsonString());
         }
     }
